@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simulation d'un neurone artificiel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+	<hr>
+	<!-- https://www.w3schools.com/howto/howto_css_two_columns.asp -->
+	<fieldset id="simulateur_neurone">
+		<legend id="titre_simulateur">Simulation d'un neurone artificiel</legend>
+		<br><br>
+		<div class="rangee">
+			<div class="colonne_1">
+				<label id="entree_donnees">Données d'entrée
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					-
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Pondération</label>
+				<br><br><br>
+				<span>
+					<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut()">
+						<img id="img_bouton_biais" src="/static/biais.png"></button>
+					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="/static/courte_fleche_droite.png"/>
+                    <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->	
+		 	    	<span class="contenant_jauge">
+		 				<input id="jauge_poids_biais" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+		 				<span id="sortie_jauge_poids_biais">0.00</span>
+		 			</span>
+				</span>
+				<br><br><br>
+				<span>
+					<span class="contenant_jauge">
+						<input id="jauge_entree_1" class="jauge_entree" type="range" min="0.00" max="100" value="0.00" >
+			 			<span id="sortie_jauge_entree_1">0.00</span>
+					</span>
+					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png"/>
+		 	    	<span class="contenant_jauge">
+		 				<input id="jauge_poids_1" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+		 				<span id="sortie_jauge_poids_1">0.00</span>
+		 			</span>
+				</span>
+				<br><br><br>
+				<span>
+					<span class="contenant_jauge">
+						<input id="jauge_entree_2" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
+			 			<span id="sortie_jauge_entree_2">0.00</span>
+					</span>
+					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
+		 	    	<span class="contenant_jauge">
+		 				<input id="jauge_poids_2" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+		 				<span id="sortie_jauge_poids_2">0.00</span>
+		 			</span>
+				</span>
+				<br><br><br><br>
+				<img id="trois_points" src="/static/trois_points.png"/>
+				<br><br><br><br><br>
+				<span>
+					<span class="contenant_jauge">
+						<input id="jauge_entree_3" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
+			 			<span id="sortie_jauge_entree_3">0.00</span>
+					</span>
+					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
+		 	    	<span class="contenant_jauge">
+		 				<input id="jauge_poids_3" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+		 				<span id="sortie_jauge_poids_3">0.00</span>
+		 			</span>
+				</span>
+				<br><br><br>
+				<span>
+					<span class="contenant_jauge">
+						<input id="jauge_entree_4" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
+			 			<span id="sortie_jauge_entree_4">0.00</span>
+					</span>
+					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
+		 	    	<span class="contenant_jauge">
+		 				<input id="jauge_poids_4" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+		 				<span id="sortie_jauge_poids_4">0.00</span>
+		 			</span>
+				</span>
+			</div>
+			<div class="colonne_2">
+				<label id="calcul_neurone">
+					Somme pond&eacute;r&eacute;e
+					&nbsp;
+					-
+					&nbsp;
+					Activation
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					-
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					Sortie
+				</label>
+				<br>
+				<label id="calcul_neurone_2">
+					des entrées
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					du neurone					
+				</label>
+				<br><br><br>
+				<span>
+					<img id="image_connexions_neurone" src="/static/connexions_neurone.png"/>
+					<img id="image_fond_neurone_sommation" src="/static/image_fond_neurone_sommation.png"/>
+					<button id="bouton_sommation" type="button" onclick="somme_ponderee()">
+						<img id="image_bouton_sommation" src="/static/sommation.png"/>
+					</button>
+					<img id="image_fond_neurone_activation" src="/static/image_fond_neurone_activation.png"/>
+					<button id="bouton_activation" type="button" onclick="activation()">
+						<img id="image_bouton_activation" src="/static/activation.png"/>
+					</button>
+					<button id="fleche_sortie"/>
+						<span>
+							<img id="image_fleche_sortie" src="/static/longue_fleche_droite.png"/>
+							<label id="sortie_activation" ></label>
+						</span>
+					</button>
+				</span>
+	            <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->			
+				<div id="choix_activation" class="choix_activation">
+				  <select id="activation">
+				    <option value="0">Choisir l'activation...</option>
+				    <option value="sigmoide" selected>Courbe en S verticale</option>
+				    <option value="tanh">Courbe en S horizontale</option>
+				    <option value="relu">Rampe droite &agrave; 45 degr&eacute;s</option>
+				  </select>
+				</div>
+				<br>
+				<fieldset id="afficheur_calcul_du_neurone">
+					<legend id="titre_afficheur">Calcul fait par le neurone</legend>
+					<label id="affichage_du_calcul"></label>
+				</fieldset>
+			</div>
+		</div>
+	</fieldset>
+
+	<script>
+		
+	  	var sortie_affichage_calcul = document.getElementById('affichage_du_calcul');
+	    var sortie_activation = document.getElementById('sortie_activation');
+	    var sortie_sommation = document.getElementById('sortie_sommation');
+
+	 	/* 	
+			<span class="contenant_jauge">
+				<input id="jauge_entree_1" class="jauge_entree" type="range" min="-100" max="100" value="0" >
+			 	<span id="sortie_jauge_entree_1">0</span>
+			</span>
+		*/
+
+		var entree_biais = 1.0;
+
+		function entrer_valeur_dattribut() {
+				alert("Rien à saisir pour le biais dont la valeur est fixée à 1.0");	
+		}
+
+		var jauge_entree_1 = document.getElementById("jauge_entree_1");
+		var sortie_jauge_entree_1 = document.getElementById("sortie_jauge_entree_1");
+		var entree_1 = parseFloat(document.getElementById("sortie_jauge_entree_1").innerHTML);
+		sortie_jauge_entree_1.innerHTML = entree_1.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_entree_1.oninput = function() {
+			entree_1 = (jauge_entree_1.value/100).toFixed(2);
+			sortie_jauge_entree_1.textContent = entree_1; 
+		}
+
+		var jauge_entree_2 = document.getElementById("jauge_entree_2");
+		var sortie_jauge_entree_2 = document.getElementById("sortie_jauge_entree_2");
+		var entree_2 = parseFloat(document.getElementById("sortie_jauge_entree_2").innerHTML);
+		sortie_jauge_entree_2.innerHTML = entree_2.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_entree_2.oninput = function() {
+			entree_2 = (jauge_entree_2.value/100).toFixed(2);
+			sortie_jauge_entree_2.textContent = entree_2; 
+		}
+
+		var jauge_entree_3 = document.getElementById("jauge_entree_3");
+		var sortie_jauge_entree_3 = document.getElementById("sortie_jauge_entree_3");
+		var entree_3 = parseFloat(document.getElementById("sortie_jauge_entree_3").innerHTML);
+		sortie_jauge_entree_3.innerHTML = entree_3.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_entree_3.oninput = function() {
+			entree_3 = (jauge_entree_3.value/100).toFixed(2);
+			sortie_jauge_entree_3.textContent = entree_3; 
+		}
+
+		var jauge_entree_4 = document.getElementById("jauge_entree_4");
+		var sortie_jauge_entree_4 = document.getElementById("sortie_jauge_entree_4");
+		var entree_4 = parseFloat(document.getElementById("sortie_jauge_entree_4").innerHTML);
+		sortie_jauge_entree_4.innerHTML = entree_4.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_entree_4.oninput = function() {
+			entree_4 = (jauge_entree_4.value/100).toFixed(2);
+			sortie_jauge_entree_4.textContent = entree_4; 
+		}
+
+	 	/* 	
+			<span class="contenant_jauge">
+				<input id="jauge_poids_biais" class="jauge_poids" type="range" min="-100" max="100" value="0" >
+			 	<span id="sortie_jauge_poids_biais">0</span>
+			</span>
+		*/
+
+		var jauge_poids_biais = document.getElementById("jauge_poids_biais");
+		var sortie_jauge_poids_biais = document.getElementById("sortie_jauge_poids_biais");
+		var poids_biais = parseFloat(document.getElementById("sortie_jauge_poids_biais").innerHTML);
+		sortie_jauge_poids_biais.innerHTML = poids_biais.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_poids_biais.oninput = function() {
+			poids_biais = (jauge_poids_biais.value/100).toFixed(2);
+			sortie_jauge_poids_biais.textContent = poids_biais; 
+		}
+
+		var jauge_poids_1 = document.getElementById("jauge_poids_1");
+		var sortie_jauge_poids_1 = document.getElementById("sortie_jauge_poids_1");
+		var poids_1 = parseFloat(document.getElementById("sortie_jauge_poids_1").innerHTML);
+		sortie_jauge_poids_1.innerHTML = poids_1.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_poids_1.oninput = function() {
+			poids_1 = (jauge_poids_1.value/100).toFixed(2);
+			sortie_jauge_poids_1.textContent = poids_1; 
+		}
+
+		var jauge_poids_2 = document.getElementById("jauge_poids_2");
+		var sortie_jauge_poids_2 = document.getElementById("sortie_jauge_poids_2");
+		var poids_2 = parseFloat(document.getElementById("sortie_jauge_poids_2").innerHTML);
+		sortie_jauge_poids_2.innerHTML = poids_2.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_poids_2.oninput = function() {
+			poids_2 = (jauge_poids_2.value/100).toFixed(2);
+			sortie_jauge_poids_2.textContent = poids_2; 
+		}
+
+		var jauge_poids_3 = document.getElementById("jauge_poids_3");
+		var sortie_jauge_poids_3 = document.getElementById("sortie_jauge_poids_3");
+		var poids_3 = parseFloat(document.getElementById("sortie_jauge_poids_3").innerHTML);
+		sortie_jauge_poids_3.innerHTML = poids_3.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_poids_3.oninput = function() {
+			poids_3 = (jauge_poids_3.value/100).toFixed(2);
+			sortie_jauge_poids_3.textContent = poids_3; 
+		}
+
+		var jauge_poids_4 = document.getElementById("jauge_poids_4");
+		var sortie_jauge_poids_4 = document.getElementById("sortie_jauge_poids_4");
+		var poids_4 = parseFloat(document.getElementById("sortie_jauge_poids_4").innerHTML);
+		sortie_jauge_poids_4.innerHTML = poids_4.toFixed(2); // Afficher la valeur par défaut de la jauge
+		// Mise à jour de la sortie d'affichage de la jauge
+		jauge_poids_4.oninput = function() {
+			poids_4 = (jauge_poids_4.value/100).toFixed(2);
+			sortie_jauge_poids_4.textContent = poids_4; 
+		}
+		
+	    var somme_ponderee_entrees = 0.0;
+	    // Fonction sommation - somme ponderée des entrées
+	    function somme_ponderee() {
+	    	sortie_activation.innerHTML = ""
+	    	somme_ponderee_entrees = (entree_biais*poids_biais+entree_1*poids_1+
+	    		entree_2*poids_2+entree_3*poids_3+entree_4*poids_4).toFixed(2);
+	    	console.log("Somme pondérée: "+somme_ponderee_entrees);
+//	    	alert("Somme pondérée: "+ somme_ponderee_entrees);
+	    	affichage_somme_ponderee = afficher_somme_ponderee();
+	    	sortie_affichage_calcul.innerHTML = affichage_somme_ponderee + " = " + somme_ponderee_entrees;
+	    	return somme_ponderee_entrees;
+	    }
+
+	   var affichage_somme_ponderee = ""
+	   function afficher_somme_ponderee() {
+	    	affichage_somme_ponderee = ""
+	    	affichage_somme_ponderee += entree_biais + " x " + poids_biais + " + ";
+	    	affichage_somme_ponderee += entree_1 + " x " + poids_1 + " + ";
+	    	affichage_somme_ponderee += entree_2 + " x " + poids_2 + " + ";
+	    	affichage_somme_ponderee += entree_3 + " x " + poids_3 + " + ";
+	   	    affichage_somme_ponderee += entree_4 + " x " + poids_4;
+	   	    return affichage_somme_ponderee;
+	    }
+
+	    // Fonctions d'activation https://en.wikipedia.org/wiki/Activation_function
+		// Courbe en S verticale entre 0 et +1 
+		// Appelée fonction sigmoïde ou fonction logistique
+	    function sigmoide(x) {
+	    	return (1/(1 + Math.pow(Math.E, -x)));
+	    }
+
+	    // Fonction tanh ou tangente_hyperbolique
+	    function tangente_hyperbolique(x) {
+	    	return Math.tanh(x);
+	    }
+
+	    // Fonction ReLU (Rectified Linear Unit)
+		function relu(x) {
+			if (x <= 0) {
+				return 0;
+			} else {
+				return x;
+			}
+		}
+
+		// Code javascript pour préparer le menu déroulant pour choisir l'activation
+		// https://www.w3schools.com/howto/howto_custom_select.asp
+		var x, i, j, l, ll, selElmnt, a, b, c;
+		/* Look for any elements with the class "custom-select": */
+		x = document.getElementsByClassName("choix_activation");
+		l = x.length;
+		for (i = 0; i < l; i++) {
+		  selElmnt = x[i].getElementsByTagName("select")[0];
+		  ll = selElmnt.length;
+		  /* For each element, create a new DIV that will act as the selected item: */
+		  a = document.createElement("DIV");
+		  a.setAttribute("class", "select-selected");
+		  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+		  x[i].appendChild(a);
+		  /* For each element, create a new DIV that will contain the option list: */
+		  b = document.createElement("DIV");
+		  b.setAttribute("class", "select-items select-hide");
+		  for (j = 1; j < ll; j++) {
+		    /* For each option in the original select element,
+		    create a new DIV that will act as an option item: */
+		    c = document.createElement("DIV");
+		    c.innerHTML = selElmnt.options[j].innerHTML;
+		    c.addEventListener("click", function(e) {
+		        /* When an item is clicked, update the original select box,
+		        and the selected item: */
+		        var y, i, k, s, h, sl, yl;
+		        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+		        sl = s.length;
+		        h = this.parentNode.previousSibling;
+		        for (i = 0; i < sl; i++) {
+		          if (s.options[i].innerHTML == this.innerHTML) {
+		            s.selectedIndex = i;
+		            h.innerHTML = this.innerHTML;
+		            y = this.parentNode.getElementsByClassName("same-as-selected");
+		            yl = y.length;
+		            for (k = 0; k < yl; k++) {
+		              y[k].removeAttribute("class");
+		            }
+		            this.setAttribute("class", "same-as-selected");
+		            break;
+		          }
+		        }
+		        h.click();
+		    });
+		    b.appendChild(c);
+		  }
+		  x[i].appendChild(b);
+		  a.addEventListener("click", function(e) {
+		    /* When the select box is clicked, close any other select boxes,
+		    and open/close the current select box: */
+		    e.stopPropagation();
+		    closeAllSelect(this);
+		    this.nextSibling.classList.toggle("select-hide");
+		    this.classList.toggle("select-arrow-active");
+		  });
+		}
+
+		function closeAllSelect(elmnt) {
+		  /* A function that will close all select boxes in the document,
+		  except the current select box: */
+		  var x, y, i, xl, yl, arrNo = [];
+		  x = document.getElementsByClassName("select-items");
+		  y = document.getElementsByClassName("select-selected");
+		  xl = x.length;
+		  yl = y.length;
+		  for (i = 0; i < yl; i++) {
+		    if (elmnt == y[i]) {
+		      arrNo.push(i)
+		    } else {
+		      y[i].classList.remove("select-arrow-active");
+		    }
+		  }
+		  for (i = 0; i < xl; i++) {
+		    if (arrNo.indexOf(i)) {
+		      x[i].classList.add("select-hide");
+		    }
+		  }
+		}
+
+		/* If the user clicks anywhere outside the select box,
+		then close all select boxes: */
+		document.addEventListener("click", closeAllSelect);
+
+		var fonction_activation = 'sigmoide'
+
+	    function activation() {
+	    	console.log("Bouton Activation!");
+	    	if (document.getElementById("activation").value) {
+	    		fonction_activation = document.getElementById("activation").value;
+	    		console.log("fonction_activation=",fonction_activation);
+	    	}
+	    	x = somme_ponderee()
+	    	calcul_a_afficher = afficher_somme_ponderee();
+	 		switch(fonction_activation) {
+			  case "sigmoide":
+			    resultat_activation = sigmoide(x); 
+			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
+			    alert("Activation: Courbe en S verticale entre 0 et +1 ou sigmoïde, ou fonction logistique.")
+				console.log("x = "+ x + " sigmoide = "+ resultat_activation);
+			    break;
+			  case "tanh":
+			    resultat_activation = tangente_hyperbolique(x); 
+			    calcul_a_afficher = "tanh( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
+			    alert("Activation: Courbe en S horizontale entre -1 et +1 ou tangente hyperbolique.");
+				console.log("x = "+ x + " tangente_hyperbolique = "+ resultat_activation);
+			    break;
+			  case "relu":
+			    resultat_activation = relu(x);
+			    calcul_a_afficher = "relu( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
+			    alert("Activation: Rampe droite à 45 degré ou unité linéaire rectifiée, en anglais ReLU");
+				console.log("x = "+ x + " ReLU = "+ resultat_activation);
+			    break;
+			  default:
+				console.log("*** ERREUR activation ***");
+			    alert("*** ERREUR activation ***");
+			    resultat_activation = "ERREUR"
+			}
+			sortie_affichage_calcul.innerHTML = calcul_a_afficher;
+			sortie_activation.innerHTML = "&nbsp;&nbsp;"+ resultat_activation.toFixed(2);
+	    }
+
+	    // Nombre aleatoire entre 0 et 1
+	    function nombreAleatoire() {
+	        return Math.random(); 
+	    }
+
+	</script>
+
+	<style>
+
+		/* 
+		   Couleur bordure: #3D85C6
+		   Remplissage: #CFE2F3FF
+		*/
+
+		* {
+			background-color: white; 
+			border:none;
+		}
+
+		/* Create two columns that floats next to each other */
+		/* Clear floats after the columns */
+
+		#simulateur_neurone {
+		  border: 4px solid;
+		  border-radius: 10px 10px 10px 10px;
+		  border-color: #3D85C6;
+		}
+
+		#titre_simulateur {
+/*			text-align: center; */
+			font-weight: bold;
+			font-size: 200%;
+		}
+
+		.rangee{
+			margin: 0 auto;
+		}
+		
+		.rangee:after {
+	  		content: "";
+	  		display: table;
+	  		clear: both;
+		}
+
+		.colonne_1 {
+	  		float: left;
+	  		width: 30%;
+			display: table;
+			margin: 0 auto;
+			margin-right: 0px;
+			border-right: 0px;
+	  		padding-right: 0px;
+		}
+
+		#entree_donnees {
+			font-weight: bold;
+			font-size: 150%;			
+		}
+
+		#bouton_biais {
+			padding-left:30px;		
+		}
+
+		#img_bouton_biais {
+			padding-left:28px;
+		}
+
+		#trois_points {
+			padding-left:190px;
+		}
+
+		#courte_fleche_droite_biais {
+			padding-left:60px;
+		}
+		
+		.courte_fleche_droite{
+			padding-bottom:19px;
+		}
+
+		.colonne_2 {
+	  		float: left;
+	  		width: 70%;
+			display: table;
+			margin: 0 auto;
+			padding-bottom:0px;
+			margin-left: 0px;
+			border-left: 0px;
+	  		padding-left: 0px;
+		}
+		
+
+		#image_connexions_neurone {
+			padding-top:0px;
+		}
+
+
+		#calcul_neurone {
+			margin-left: 180px;
+			font-weight: bold;
+			font-size: 150%;			
+		}
+
+		#calcul_neurone_2 {
+			margin-left: 210px;
+			font-weight: bold;
+			font-size: 150%;			
+		}
+
+		#image_fond_neurone_sommation {
+			padding-bottom:100px;
+			margin-right:0px;
+			border-right:0px;
+	  		padding-right:0px;			
+		}
+
+		#image_bouton_sommation {
+			width:100px;
+			height:100px;
+		}
+
+		#bouton_sommation {
+			width:100px;
+			height:100px;
+			margin-left:0px;
+			border-left:0px;
+	  		padding-left:0px;			
+			position:relative;
+			left:-118px;
+			bottom:154px;
+		}
+		
+		#image_fond_neurone_activation {
+			padding-bottom:100px;
+			margin-right:0px;
+			border-right:0px;
+	  		padding-right:0px;			
+			position:relative;
+			left:-108px;
+		}
+
+		#image_bouton_activation {	
+		}	
+
+		#bouton_activation {
+			width:100px;
+			height:100px;
+		  	border-radius: 10px;
+			margin-left: 0px;
+			border-left: 0px;
+	  		padding-left: 0px;
+			position:relative;
+			left:-242px; 
+            bottom:154px;
+		}	
+
+		.bouton_sortie {
+			border:none;
+			margin-left: 0px;
+			border-left: 0px;
+	  		padding-left: 0px;
+		}		
+
+		#image_fleche_sortie {
+			position:relative;
+			padding-bottom:200px;
+			left:-220px;
+		}
+
+		#sortie_activation {
+			font-weight: bold;
+			font-size: 150%;
+			position:relative; 
+			bottom:204px;
+			left:-230px;
+		}
+
+		/*  
+		    <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->
+		*/
+
+		/*the container must be positioned relative:*/
+		.choix_activation {
+		  position: relative;
+		  font-family: Arial;
+		  /* Modif */
+		  margin-left:380px;
+		  width:150px;
+		  border-radius: 10px 10px 10px 10px;
+		}
+
+		.choix_activation select {
+		  display: none; /*hide original SELECT element:*/
+		}
+
+		.select-selected {
+		  /* Modif */
+		  /* background-color: DodgerBlue; */
+		  background-color: #CFE2F3FF;
+		}
+
+		/*style the arrow inside the select element:*/
+		.select-selected:after {
+		  position: absolute;
+		  content: "";
+		  top: 14px;
+		  right: 10px;
+		  width: 0;
+		  height: 0;
+		  border: 6px solid transparent;
+		  border-color: #fff transparent transparent transparent;
+		}
+
+		/*point the arrow upwards when the select box is open (active):*/
+		.select-selected.select-arrow-active:after {
+		  border-color: transparent transparent #fff transparent;
+		  top: 7px;
+		}
+
+		/*style the items (options), including the selected item:*/
+		.select-items div,.select-selected {
+		  /* Modif */
+		  /* color: #ffffff; */
+		  color: red;
+		  padding: 8px 16px;
+		  /* Modif */
+		  /* border: 1px solid transparent; */
+		  border: 4px solid transparent;
+		  border-radius: 10px;
+
+		  /* Modif */
+		  /* border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; */
+		  border-color: #3D85C6;
+		  cursor: pointer;
+		  user-select: none;
+		  /* Modif */
+		  background-color: #CFE2F3FF;
+		}
+
+		/*style items (options):*/
+		.select-items {
+		  position: absolute;
+		  /* Modif */
+		  /* background-color: DodgerBlue; */
+		  background-color: #CFE2F3FF;		  
+		  top: 100%;
+		  left: 0;
+		  right: 0;
+		  z-index: 99;
+		}
+
+		/*hide the items when the select box is closed:*/
+		.select-hide {
+		  display: none;
+		}
+
+		.select-items div:hover, .same-as-selected {
+		  background-color: rgba(0, 0, 0, 0.1);
+		}		
+
+		#afficheur_calcul_du_neurone {
+		  border: 4px solid;
+		  border-radius: 10px 10px 10px 10px;
+		  border-color: #3D85C6;
+		  height: 30px
+		}
+
+		#titre_afficheur{
+			background-color: white;
+			font-weight: bold;
+			font-size: 100%;
+		}
+
+		#affichage_du_calcul{
+			height:auto;
+			width:auto;
+		}
+
+		.contenant_jauge {
+			position: relative;
+			bottom:22px;
+		}
+
+		.jauge_entree {
+  			-webkit-appearance: none;
+   			/* width: 100%; */
+ 			width: 150px;
+  			height: 15px;
+  			border-radius: 5px; 
+  			border: 1px solid;
+		    border-color: #3D85C6;
+ 			/* background: #d3d3d3; */
+ 			background: #CFE2F3FF;
+  			outline: none;
+  			/* opacity: 0.7; */
+  			-webkit-transition: .2s;
+  			/* transition: opacity .2s; */
+		}
+
+		.jauge_entree::-webkit-slider-thumb {
+		  -webkit-appearance: none;
+		  appearance: none;
+		  /* width: 23px; */
+		  width: 76px;
+		  /* height: 24px; */
+		  height: 59px;
+		  border: 0;
+		  background: url("/static/entree.png");
+		  cursor: pointer;
+		}
+
+		.jauge_entree::-moz-range-thumb {
+			/* width: 23px; */
+		  	width: 76x;
+		  	/* height: 24px; */
+		  	height: 59px;
+	  		border: 0;
+		  	background: url("/static/entree.png");
+		  	cursor: pointer;
+		}
+
+		.jauge_entree::-ms-thumb {
+			/* width: 23px; */
+		  	width: 76x;
+		  	/* height: 24px; */
+		  	height: 59px;
+	  		border: 0;
+		  	background: url("/static/ponderation.png");
+		  	cursor: pointer;
+		}
+
+		.jauge_poids {
+  			-webkit-appearance: none;
+   			/* width: 100%; */
+ 			width: 150px;
+  			height: 15px;
+  			border-radius: 5px; 
+  			border: 1px solid;
+		    border-color: #3D85C6;
+ 			/* background: #d3d3d3; */
+ 			background: #CFE2F3FF;
+  			outline: none;
+  			/* opacity: 0.7; */
+  			-webkit-transition: .2s;
+  			/* transition: opacity .2s; */
+		}
+
+		.jauge_poids::-webkit-slider-thumb {
+		  -webkit-appearance: none;
+		  appearance: none;
+		  /* width: 23px; */
+		  width: 62px;
+		  /* height: 24px; */
+		  height: 62px;
+		  border: 0;
+		  background: url("/static/ponderation.png");
+		  cursor: pointer;
+		}
+
+		.jauge_poids::-moz-range-thumb {
+			/* width: 23px; */
+		  	width: 62x;
+		  	/* height: 24px; */
+		  	height: 62px;
+	  		border: 0;
+		  	background: url("/static/ponderation.png");
+		  	cursor: pointer;
+		}
+
+		.jauge_poids::-ms-thumb {
+			/* width: 23px; */
+		  	width: 62x;
+		  	/* height: 24px; */
+		  	height: 62px;
+	  		border: 0;
+		  	background: url("/static/ponderation.png");
+		  	cursor: pointer;
+		}
+
+	</style>
+  </body>
+</html>
