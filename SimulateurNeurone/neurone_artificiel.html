@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <!-- Remplacement hyperliens pour Open edX find:(\w*.png) replace:$1 -->
-  <!-- find: (\w*.png) replace: https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@$1 -->
+  <!-- find: (\w*.png(\w*.png) replace: https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@$1 -->
   <head>
     <title>Simulation d'un neurone artificiel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
 					<!-- https://www.w3schools.com/howto/howto_css_tooltip.asp-->
 					<span class="infobulle">
 						<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut(this.id)">
-							<img id="img_bouton_biais" src="biais.png">
+							<img id="img_bouton_biais" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@biais.png">
 						</button>
 						<span class="infobulletext">Biais du neurone, fix&eacute; &agrave; 1.0</span>
 					</span>
@@ -33,7 +33,7 @@
 					<label id="affichage_entree_binaire_biais_1" class="affichage_entree_binaire_1" for="1">1</label>
 					<input id="entree_bin_biais_1" class="entree_binaire_1" type="radio" checked="checked"
 						name="entree_bin_biais" value='1' onclick="entrer_valeur_dattribut(this.id)">					
-					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="courte_fleche_droite.png"/>
+					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@courte_fleche_droite.png"/>
                     <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->	
 		 	    	<span class="infobulle">
 		 	    		<span class="contenant_glissiere">
@@ -47,7 +47,7 @@
 				<span class="contenant_entree">
 					<span class="infobulle">
 						<span>
-							<img id="image_entree" src="entree.png"/>
+							<img id="image_entree" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png"/>
 							<label class="affichage_entree_binaire_0" for="0">0</label>
 							<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
 							       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
@@ -57,7 +57,7 @@
 						</span>
 						<span class="infobulletext">Entr&eacute;e de la donn&eacute;e no 1</span>
 					</span>
-					<img class="courte_fleche_droite" src="courte_fleche_droite.png"/>
+					<img class="courte_fleche_droite" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@courte_fleche_droite.png"/>
 		 	    	<span class="infobulle">
 		 	    		<span class="contenant_glissiere">
 		 					<input id="glissiere_poids_1" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
@@ -68,14 +68,14 @@
 				</span>
 				<br><br><br>
 		 	    <span class="infobulle">
-					<img id="trois_points" src="trois_points.png"/>
+					<img id="trois_points" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@trois_points.png"/>
 					<span class="infobulletext">Le neurone pourrait comporter d'autres entr&eacute;es</span>
 				</span>
 				<br><br><br><br><br><br>
 				<span class="contenant_entree">
 					<span class="infobulle">
 						<span>
-							<img id="image_entree" src="entree.png"/>
+							<img id="image_entree" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png"/>
 							<label class="affichage_entree_binaire_0" for="0">0</label>
 							<input id="entree_bin_2_0" class="entree_binaire_0" type="radio" checked="checked" 
 							       name="entree_bin_2" value='0' onclick="entrer_valeur_dattribut(this.id)">
@@ -85,7 +85,7 @@
 						</span>
 						<span class="infobulletext">Entr&eacute;e de la donn&eacute;e no 2</span>
 					</span>
-					<img class="courte_fleche_droite" src="courte_fleche_droite.png" />
+					<img class="courte_fleche_droite" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@courte_fleche_droite.png" />
 		 	    	<span class="infobulle">
 			 	    	<span class="contenant_glissiere">
 			 				<input id="glissiere_poids_2" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
@@ -104,27 +104,27 @@
 				<br>
 				<span>
 					<span class="infobulle">
-						<img id="image_connexions_neurone" src="connexions_neurone.png"/>
+						<img id="image_connexions_neurone" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@connexions_neurone.png"/>
 						<span class="infobulletext">Connexion des entr&eacute;es au neurone</span>
 					</span>
-					<img id="image_fond_neurone_sommation" src="image_fond_neurone_sommation.png"/>
+					<img id="image_fond_neurone_sommation" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@image_fond_neurone_sommation.png"/>
 					<button id="bouton_sommation" type="button" onclick="somme_ponderee()">
 						<span class="infobulle">
-							<img id="image_bouton_sommation" src="sommation.png"/>
+							<img id="image_bouton_sommation" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@sommation.png"/>
 							<span class="infobulletext">Calcul de la somme pond&eacute;r&eacute;e des entr&eacute;es</span>
 						</span>
 					</button>
-					<img id="image_fond_neurone_activation" src="image_fond_neurone_activation.png"/>		
+					<img id="image_fond_neurone_activation" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@image_fond_neurone_activation.png"/>		
 					<button id="bouton_activation" type="button" onclick="activation()">
 						<span class="infobulle"> 
-							<img id="image_bouton_activation" src="activation.png"/>
+							<img id="image_bouton_activation" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@activation.png"/>
 							<span class="infobulletext">Calcul de l'activation du neurone</span>
 						</span>
 					</button>
-					<img id="image_fleche_sortie" src="longue_fleche_droite.png"/>
+					<img id="image_fleche_sortie" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@longue_fleche_droite.png"/>
 					<button id="fleche_sortie"/>
 						<span id="sortie_activation_infobulle" class="infobulle">
-							<img id="image_sortie_activation" src="sortie.png"/>
+							<img id="image_sortie_activation" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@sortie.png"/>
 							<span class="infobulletext">Sortie du neurone</span>
 						</span>
 						<label id="affichage_activation"></label>
@@ -158,7 +158,7 @@
 	    var sortie_activation = document.getElementById('affichage_activation');
 /*
 		<span>
-			<img id="image_entree" src="entree.png"/>
+			<img id="image_entree" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png"/>
 			<label class="affichage_entree_binaire_0" for="0">0</label>
 			<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
 			       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
@@ -387,9 +387,9 @@
 			    calcul_a_afficher += " - Activation: Courbe en S positive, entre 0 et +1, ou sigmo&iuml;de, ou fonction logistique.";
 			    // alert("Activation: Courbe en S positive, entre 0 et +1, ou sigmoïde, ou fonction logistique.")
 			    if (resultat_activation >= 0.5) {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait «allum&eacute;».";
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait 'allum&eacute;'.";
 			    } else {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas «allum&eacute;».";
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas 'allum&eacute;'.";
 			    }
 				console.log("x = "+ x + " sigmoide = "+ resultat_activation);
 			    break;
@@ -399,9 +399,9 @@
 			    calcul_a_afficher += " - Activation: Courbe en S centr&eacute;e sur z&eacute;ro, entre -1 et +1 ou tangente hyperbolique.";
 			    // alert("Activation: Courbe en S centrée sur zéro, entre -1 et +1 ou tangente hyperbolique.");
 			    if (resultat_activation >= 0.0) {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro serait «allum&eacute;».";
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro serait 'allum&eacute;'.";
 			    } else {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.0 ne serait pas «allum&eacute;»."
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.0 ne serait pas 'allum&eacute;'."
 			    }
 				console.log("x = "+ x + " tangente_hyperbolique = "+ resultat_activation);
 			    break;
@@ -840,7 +840,7 @@
 		  /* height: 24px; */
 		  height: 59px;
 		  border: 0;
-		  background: url("entree.png");
+		  background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png");
 		  cursor: pointer;
 		}
 
@@ -850,7 +850,7 @@
 		  	/* height: 24px; */
 		  	height: 59px;
 	  		border: 0;
-		  	background: url("entree.png");
+		  	background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png");
 		  	cursor: pointer;
 		}
 
@@ -860,7 +860,7 @@
 		  	/* height: 24px; */
 		  	height: 59px;
 	  		border: 0;
-		  	background: url("ponderation.png");
+		  	background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@ponderation.png");
 		  	cursor: pointer;
 		}
 
@@ -888,7 +888,7 @@
 		  /* height: 24px; */
 		  height: 62px;
 		  border: 0;
-		  background: url("ponderation.png");
+		  background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@ponderation.png");
 		  cursor: pointer;
 		}
 
@@ -898,7 +898,7 @@
 		  	/* height: 24px; */
 		  	height: 62px;
 	  		border: 0;
-		  	background: url("ponderation.png");
+		  	background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@ponderation.png");
 		  	cursor: pointer;
 		}
 
@@ -908,7 +908,7 @@
 		  	/* height: 24px; */
 		  	height: 62px;
 	  		border: 0;
-		  	background: url("ponderation.png");
+		  	background: url("https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@ponderation.png");
 		  	cursor: pointer;
 		}
 
