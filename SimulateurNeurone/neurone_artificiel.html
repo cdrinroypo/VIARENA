@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <!-- Remplacement hyperliens pour Open edX (\w*.png) $1 -->
+  <!-- Remplacement hyperliens pour Open edX find:(\w*.png) replace:$1 -->
+  <!-- find: (\w*.png) replace: https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@$1 -->
   <head>
     <title>Simulation d'un neurone artificiel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +20,12 @@
 				</span>
 				<br><br>
 				<span>
+					<!-- https://www.w3schools.com/howto/howto_css_tooltip.asp-->
 					<span class="infobulle">
 						<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut(this.id)">
 							<img id="img_bouton_biais" src="biais.png">
 						</button>
-						<span class="infobulletext">Biais du neurone, fixé à 1.0</span>
+						<span class="infobulletext">Biais du neurone, fix&eacute; &agrave; 1.0</span>
 					</span>
 					<label id="affichage_entree_binaire_biais_0" class="affichage_entree_binaire_0" for="0">0</label>
 					<input id="entree_bin_biais_0" class="entree_binaire_0" type="radio" disabled
@@ -38,7 +40,7 @@
 		 					<input id="glissiere_poids_biais" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
 		 					<span id="affichage_glissiere_poids_biais">0.00</span>
 		 				</span>
-		 				<span class="infobulletext">Glissière pour donner un poids au biais.</span>
+		 				<span class="infobulletext">Glissi&egrave;re pour donner un poids au biais.</span>
 		 			</span>
 				</span>
 				<br><br><br>
@@ -53,7 +55,7 @@
 							<input id="entree_bin_1_1" class="entree_binaire_1" type="radio" 
 								   name="entree_bin_1" value='1' onclick="entrer_valeur_dattribut(this.id)">					
 						</span>
-						<span class="infobulletext">Entrée de la donnée no 1</span>
+						<span class="infobulletext">Entr&eacute;e de la donn&eacute;e no 1</span>
 					</span>
 					<img class="courte_fleche_droite" src="courte_fleche_droite.png"/>
 		 	    	<span class="infobulle">
@@ -61,13 +63,13 @@
 		 					<input id="glissiere_poids_1" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
 		 					<span id="affichage_glissiere_poids_1">0.00</span>
 		 				</span>
-		 				<span class="infobulletext">Glissière pour donner un poids à l'entrée no. 1</span>
+		 				<span class="infobulletext">Glissi&egrave;re pour donner un poids &agrave; l'entr&eacute;e no. 1</span>
 					</span>
 				</span>
 				<br><br><br>
 		 	    <span class="infobulle">
 					<img id="trois_points" src="trois_points.png"/>
-					<span class="infobulletext">Le neurone pourrait comporter d'autres entrées</span>
+					<span class="infobulletext">Le neurone pourrait comporter d'autres entr&eacute;es</span>
 				</span>
 				<br><br><br><br><br><br>
 				<span class="contenant_entree">
@@ -81,7 +83,7 @@
 							<input id="entree_bin_2_1" class="entree_binaire_1" type="radio" 
 								   name="entree_bin_2" value='1' onclick="entrer_valeur_dattribut(this.id)">					
 						</span>
-						<span class="infobulletext">Entrée de la donnée no 2</span>
+						<span class="infobulletext">Entr&eacute;e de la donn&eacute;e no 2</span>
 					</span>
 					<img class="courte_fleche_droite" src="courte_fleche_droite.png" />
 		 	    	<span class="infobulle">
@@ -89,7 +91,7 @@
 			 				<input id="glissiere_poids_2" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
 			 				<span id="affichage_glissiere_poids_2">0.00</span>
 			 			</span>
-		 				<span class="infobulletext">Glissière pour donner un poids à l'entrée no. 2</span>
+		 				<span class="infobulletext">Glissi&egrave;re pour donner un poids &agrave; l'entr&eacute;e no. 2</span>
 				</span>
 				<br><br><br>
 			</div>
@@ -102,14 +104,14 @@
 				<br>
 				<span>
 					<span class="infobulle">
-						<img id="image_connexions_neurone" src="connexions_neurone.png"/>
-						<span class="infobulletext">Connexion des entrées au neurone</span>
+						<img id="image_connexions_neurone" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@connexions_neurone.png"/>
+						<span class="infobulletext">Connexion des entr&eacute;es au neurone</span>
 					</span>
 					<img id="image_fond_neurone_sommation" src="image_fond_neurone_sommation.png"/>
 					<button id="bouton_sommation" type="button" onclick="somme_ponderee()">
 						<span class="infobulle">
 							<img id="image_bouton_sommation" src="sommation.png"/>
-							<span class="infobulletext">Calcul de la somme pondérée des entrées</span>
+							<span class="infobulletext">Calcul de la somme pond&eacute;r&eacute;e des entr&eacute;es</span>
 						</span>
 					</button>
 					<img id="image_fond_neurone_activation" src="image_fond_neurone_activation.png"/>		
@@ -173,11 +175,11 @@
 			// alert("bouton_id="+bouton_id)
 			switch(bouton_id) {
 			  case "bouton_biais":
-				alert("Rien à saisir pour le biais dont la valeur est fixée à 1.0");	
+				alert("Rien &agrave; saisir pour le biais dont la valeur est fix&eacute;e &agrave; 1.0");
 				console.log("Rien à saisir pour le biais dont la valeur est fixée à 1.0");
 			    break;
 			  case "entree_bin_biais_1":
-				alert("Rien à saisir pour le biais dont la valeur est fixée à 1.0");	
+				alert("Rien &agrave; saisir pour le biais dont la valeur est fix&eacute;e &agrave; 1.0");	
 				console.log("Rien à saisir pour le biais dont la valeur est fixée à 1.0");
 			    break;
 			  case "entree_bin_1_0":
@@ -895,6 +897,8 @@
 		  	background: url("ponderation.png");
 		  	cursor: pointer;
 		}
+
+		/* https://www.w3schools.com/howto/howto_css_tooltip.asp */
 
 		.infobulle {
 			position: relative;
