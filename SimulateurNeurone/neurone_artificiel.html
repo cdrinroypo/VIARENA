@@ -19,56 +19,77 @@
 				</span>
 				<br><br>
 				<span>
-					<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut(this.id)">
-						<img id="img_bouton_biais" src="biais.png"></button>
-						<label id="affichage_entree_binaire_biais_0" class="affichage_entree_binaire_0" for="0">0</label>
-						<input id="entree_bin_biais_0" class="entree_binaire_0" type="radio" disabled
-						       name="entree_bin_biais" value='0' onclick="entrer_valeur_dattribut(this.id)">
-						<label id="affichage_entree_binaire_biais_1" class="affichage_entree_binaire_1" for="1">1</label>
-						<input id="entree_bin_biais_1" class="entree_binaire_1" type="radio" checked="checked"
-							   name="entree_bin_biais" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+					<span class="infobulle">
+						<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut(this.id)">
+							<img id="img_bouton_biais" src="biais.png">
+						</button>
+						<span class="infobulletext">Biais du neurone, fixé à 1.0</span>
+					</span>
+					<label id="affichage_entree_binaire_biais_0" class="affichage_entree_binaire_0" for="0">0</label>
+					<input id="entree_bin_biais_0" class="entree_binaire_0" type="radio" disabled
+						name="entree_bin_biais" value='0' onclick="entrer_valeur_dattribut(this.id)">
+					<label id="affichage_entree_binaire_biais_1" class="affichage_entree_binaire_1" for="1">1</label>
+					<input id="entree_bin_biais_1" class="entree_binaire_1" type="radio" checked="checked"
+						name="entree_bin_biais" value='1' onclick="entrer_valeur_dattribut(this.id)">					
 					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="courte_fleche_droite.png"/>
                     <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->	
-		 	    	<span class="contenant_jauge">
-		 				<input id="jauge_poids_biais" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="affichage_jauge_poids_biais">0.00</span>
+		 	    	<span class="infobulle">
+		 	    		<span class="contenant_glissiere">
+		 					<input id="glissiere_poids_biais" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
+		 					<span id="affichage_glissiere_poids_biais">0.00</span>
+		 				</span>
+		 				<span class="infobulletext">Glissière pour donner un poids au biais.</span>
 		 			</span>
 				</span>
 				<br><br><br>
 				<span class="contenant_entree">
-					<span>
-						<img id="image_entree" src="entree.png"/>
-						<label class="affichage_entree_binaire_0" for="0">0</label>
-						<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
-						       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
-						<label class="affichage_entree_binaire_1" for="1">1</label>
-						<input id="entree_bin_1_1" class="entree_binaire_1" type="radio" 
-							   name="entree_bin_1" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+					<span class="infobulle">
+						<span>
+							<img id="image_entree" src="entree.png"/>
+							<label class="affichage_entree_binaire_0" for="0">0</label>
+							<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
+							       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
+							<label class="affichage_entree_binaire_1" for="1">1</label>
+							<input id="entree_bin_1_1" class="entree_binaire_1" type="radio" 
+								   name="entree_bin_1" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+						</span>
+						<span class="infobulletext">Entrée de la donnée no 1</span>
 					</span>
 					<img class="courte_fleche_droite" src="courte_fleche_droite.png"/>
-		 	    	<span class="contenant_jauge">
-		 				<input id="jauge_poids_1" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="affichage_jauge_poids_1">0.00</span>
-		 			</span>
+		 	    	<span class="infobulle">
+		 	    		<span class="contenant_glissiere">
+		 					<input id="glissiere_poids_1" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
+		 					<span id="affichage_glissiere_poids_1">0.00</span>
+		 				</span>
+		 				<span class="infobulletext">Glissière pour donner un poids à l'entrée no. 1</span>
+					</span>
 				</span>
 				<br><br><br>
-				<img id="trois_points" src="trois_points.png"/>
+		 	    <span class="infobulle">
+					<img id="trois_points" src="trois_points.png"/>
+					<span class="infobulletext">Le neurone pourrait comporter d'autres entrées</span>
+				</span>
 				<br><br><br><br><br><br>
 				<span class="contenant_entree">
-					<span>
-						<img id="image_entree" src="entree.png"/>
-						<label class="affichage_entree_binaire_0" for="0">0</label>
-						<input id="entree_bin_2_0" class="entree_binaire_0" type="radio" checked="checked" 
-						       name="entree_bin_2" value='0' onclick="entrer_valeur_dattribut(this.id)">
-						<label class="affichage_entree_binaire_1" for="1">1</label>
-						<input id="entree_bin_2_1" class="entree_binaire_1" type="radio" 
-							   name="entree_bin_2" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+					<span class="infobulle">
+						<span>
+							<img id="image_entree" src="entree.png"/>
+							<label class="affichage_entree_binaire_0" for="0">0</label>
+							<input id="entree_bin_2_0" class="entree_binaire_0" type="radio" checked="checked" 
+							       name="entree_bin_2" value='0' onclick="entrer_valeur_dattribut(this.id)">
+							<label class="affichage_entree_binaire_1" for="1">1</label>
+							<input id="entree_bin_2_1" class="entree_binaire_1" type="radio" 
+								   name="entree_bin_2" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+						</span>
+						<span class="infobulletext">Entrée de la donnée no 2</span>
 					</span>
 					<img class="courte_fleche_droite" src="courte_fleche_droite.png" />
-		 	    	<span class="contenant_jauge">
-		 				<input id="jauge_poids_2" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="affichage_jauge_poids_2">0.00</span>
-		 			</span>
+		 	    	<span class="infobulle">
+			 	    	<span class="contenant_glissiere">
+			 				<input id="glissiere_poids_2" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
+			 				<span id="affichage_glissiere_poids_2">0.00</span>
+			 			</span>
+		 				<span class="infobulletext">Glissière pour donner un poids à l'entrée no. 2</span>
 				</span>
 				<br><br><br>
 			</div>
@@ -80,32 +101,46 @@
 				</span>
 				<br>
 				<span>
-					<img id="image_connexions_neurone" src="connexions_neurone.png"/>
+					<span class="infobulle">
+						<img id="image_connexions_neurone" src="connexions_neurone.png"/>
+						<span class="infobulletext">Connexion des entrées au neurone</span>
+					</span>
 					<img id="image_fond_neurone_sommation" src="image_fond_neurone_sommation.png"/>
 					<button id="bouton_sommation" type="button" onclick="somme_ponderee()">
-						<img id="image_bouton_sommation" src="sommation.png"/>
-					</button>
-					<img id="image_fond_neurone_activation" src="image_fond_neurone_activation.png"/>
-					<button id="bouton_activation" type="button" onclick="activation()">
-						<img id="image_bouton_activation" src="activation.png"/>
-					</button>
-					<button id="fleche_sortie"/>
-						<span>
-							<img id="image_fleche_sortie" src="longue_fleche_droite.png"/>
-							<img id="image_sortie_activation" src="sortie.png"/>
-							<label id="affichage_activation" ></label>
+						<span class="infobulle">
+							<img id="image_bouton_sommation" src="sommation.png"/>
+							<span class="infobulletext">Calcul de la somme pondérée des entrées</span>
 						</span>
 					</button>
+					<img id="image_fond_neurone_activation" src="image_fond_neurone_activation.png"/>		
+					<button id="bouton_activation" type="button" onclick="activation()">
+						<span class="infobulle"> 
+							<img id="image_bouton_activation" src="activation.png"/>
+							<span class="infobulletext">Calcul de l'activation du neurone</span>
+						</span>
+					</button>
+					<img id="image_fleche_sortie" src="longue_fleche_droite.png"/>
+					<button id="fleche_sortie"/>
+						<span id="sortie_activation_infobulle" class="infobulle">
+							<img id="image_sortie_activation" src="sortie.png"/>
+							<span class="infobulletext">Sortie du neurone</span>
+						</span>
+						<label id="affichage_activation"></label>
+					</button>
 				</span>
-	            <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->			
-				<div id="choix_activation" class="choix_activation">
-				  <select id="activation">
-				    <option value="0">Choisir l'activation...</option>
-				    <option value="sigmoide" selected>Courbe en S verticale</option>
-				    <option value="tanh">Courbe en S horizontale</option>
-				    <option value="relu">Rampe droite &agrave; 45 degr&eacute;s</option>
-				  </select>
-				</div>
+	            <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->
+					<div id="choix_activation" class="choix_activation">
+						<span class="infobulle">
+							<label class="choix_activation_infobulle">Choix de l'activation du neurone</label>
+							<span class="infobulletext">Choix de l'activation du neurone</span>
+					  	</span>
+				  		<select id="activation">
+					    	<option value="0">Choisir l'activation...</option>
+					    	<option value="sigmoide" selected>Courbe en S verticale</option>
+					    	<option value="tanh">Courbe en S horizontale</option>
+					    	<option value="relu">Rampe droite &agrave; 45 degr&eacute;s</option>
+					  	</select>
+					</div>
 				<br>
 				<fieldset id="afficheur_calcul_du_neurone">
 					<legend id="titre_afficheur">Calcul fait par le neurone</legend>
@@ -172,40 +207,40 @@
 		}
 
 	 	/* 	
-			<span class="contenant_jauge">
-				<input id="jauge_poids_biais" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-			 	<span id="sortie_jauge_poids_biais">0</span>
+			<span class="contenant_glissiere">
+				<input id="glissiere_poids_biais" class="glissiere_poids" type="range" min="-100" max="100" value="0" >
+			 	<span id="sortie_glissiere_poids_biais">0</span>
 			</span>
 		*/
 
-		var jauge_poids_biais = document.getElementById("jauge_poids_biais");
-		var affichage_jauge_poids_biais = document.getElementById("affichage_jauge_poids_biais");
-		var poids_biais = parseFloat(document.getElementById("affichage_jauge_poids_biais").innerHTML);
-		affichage_jauge_poids_biais.innerHTML = poids_biais.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_poids_biais.oninput = function() {
-			poids_biais = (jauge_poids_biais.value/100).toFixed(2);
-			affichage_jauge_poids_biais.textContent = poids_biais; 
+		var glissiere_poids_biais = document.getElementById("glissiere_poids_biais");
+		var affichage_glissiere_poids_biais = document.getElementById("affichage_glissiere_poids_biais");
+		var poids_biais = parseFloat(document.getElementById("affichage_glissiere_poids_biais").innerHTML);
+		affichage_glissiere_poids_biais.innerHTML = poids_biais.toFixed(2); // Afficher la valeur par défaut de la glissiere
+		// Mise à jour de la sortie d'affichage de la glissiere
+		glissiere_poids_biais.oninput = function() {
+			poids_biais = (glissiere_poids_biais.value/100).toFixed(2);
+			affichage_glissiere_poids_biais.textContent = poids_biais; 
 		}
 
-		var jauge_poids_1 = document.getElementById("jauge_poids_1");
-		var affichage_jauge_poids_1 = document.getElementById("affichage_jauge_poids_1");
-		var poids_1 = parseFloat(document.getElementById("affichage_jauge_poids_1").innerHTML);
-		affichage_jauge_poids_1.innerHTML = poids_1.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_poids_1.oninput = function() {
-			poids_1 = (jauge_poids_1.value/100).toFixed(2);
-			affichage_jauge_poids_1.textContent = poids_1; 
+		var glissiere_poids_1 = document.getElementById("glissiere_poids_1");
+		var affichage_glissiere_poids_1 = document.getElementById("affichage_glissiere_poids_1");
+		var poids_1 = parseFloat(document.getElementById("affichage_glissiere_poids_1").innerHTML);
+		affichage_glissiere_poids_1.innerHTML = poids_1.toFixed(2); // Afficher la valeur par défaut de la glissiere
+		// Mise à jour de la sortie d'affichage de la glissiere
+		glissiere_poids_1.oninput = function() {
+			poids_1 = (glissiere_poids_1.value/100).toFixed(2);
+			affichage_glissiere_poids_1.textContent = poids_1; 
 		}
 
-		var jauge_poids_2 = document.getElementById("jauge_poids_2");
-		var affichage_jauge_poids_2 = document.getElementById("affichage_jauge_poids_2");
-		var poids_2 = parseFloat(document.getElementById("affichage_jauge_poids_2").innerHTML);
-		affichage_jauge_poids_2.innerHTML = poids_2.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_poids_2.oninput = function() {
-			poids_2 = (jauge_poids_2.value/100).toFixed(2);
-			affichage_jauge_poids_2.textContent = poids_2; 
+		var glissiere_poids_2 = document.getElementById("glissiere_poids_2");
+		var affichage_glissiere_poids_2 = document.getElementById("affichage_glissiere_poids_2");
+		var poids_2 = parseFloat(document.getElementById("affichage_glissiere_poids_2").innerHTML);
+		affichage_glissiere_poids_2.innerHTML = poids_2.toFixed(2); // Afficher la valeur par défaut de la glissiere
+		// Mise à jour de la sortie d'affichage de la glissiere
+		glissiere_poids_2.oninput = function() {
+			poids_2 = (glissiere_poids_2.value/100).toFixed(2);
+			affichage_glissiere_poids_2.textContent = poids_2; 
 		}
 		
 	    var somme_ponderee_entrees = 0.0;
@@ -462,7 +497,7 @@
 			left:-15px;
 		}
 
-		#affichage_jauge_poids_biais {
+		#affichage_glissiere_poids_biais {
 			position:relative;
 			left:-20px;
 		}
@@ -509,7 +544,7 @@
         /* padding-left:28px; */
 		}
 
-		#jauge_poids_biais {
+		#glissiere_poids_biais {
 			position:relative;
 			left:-20px;
 		}
@@ -646,6 +681,10 @@
 			left:-200px;
 		}
 
+		.choix_activation_infobulle {
+			 color:white; 
+		}
+
 		#affichage_activation {
 			font-weight: bold;
 			font-size: 200%;
@@ -756,12 +795,12 @@
 			width:auto;
 		}
 
-		.contenant_jauge {
+		.contenant_glissiere {
 			position: relative;
 			bottom:22px;
 		}
 
-		.jauge_entree {
+		.glissiere_entree {
   			-webkit-appearance: none;
    			/* width: 100%; */
  			width: 150px;
@@ -777,7 +816,7 @@
   			/* transition: opacity .2s; */
 		}
 
-		.jauge_entree::-webkit-slider-thumb {
+		.glissiere_entree::-webkit-slider-thumb {
 		  -webkit-appearance: none;
 		  appearance: none;
 		  /* width: 23px; */
@@ -789,7 +828,7 @@
 		  cursor: pointer;
 		}
 
-		.jauge_entree::-moz-range-thumb {
+		.glissiere_entree::-moz-range-thumb {
 			/* width: 23px; */
 		  	width: 76x;
 		  	/* height: 24px; */
@@ -799,7 +838,7 @@
 		  	cursor: pointer;
 		}
 
-		.jauge_entree::-ms-thumb {
+		.glissiere_entree::-ms-thumb {
 			/* width: 23px; */
 		  	width: 76x;
 		  	/* height: 24px; */
@@ -809,7 +848,7 @@
 		  	cursor: pointer;
 		}
 
-		.jauge_poids {
+		.glissiere_poids {
   			-webkit-appearance: none;
    			/* width: 100%; */
  			width: 150px;
@@ -825,7 +864,7 @@
   			/* transition: opacity .2s; */
 		}
 
-		.jauge_poids::-webkit-slider-thumb {
+		.glissiere_poids::-webkit-slider-thumb {
 		  -webkit-appearance: none;
 		  appearance: none;
 		  /* width: 23px; */
@@ -837,7 +876,7 @@
 		  cursor: pointer;
 		}
 
-		.jauge_poids::-moz-range-thumb {
+		.glissiere_poids::-moz-range-thumb {
 			/* width: 23px; */
 		  	width: 62x;
 		  	/* height: 24px; */
@@ -847,7 +886,7 @@
 		  	cursor: pointer;
 		}
 
-		.jauge_poids::-ms-thumb {
+		.glissiere_poids::-ms-thumb {
 			/* width: 23px; */
 		  	width: 62x;
 		  	/* height: 24px; */
@@ -855,6 +894,29 @@
 	  		border: 0;
 		  	background: url("ponderation.png");
 		  	cursor: pointer;
+		}
+
+		.infobulle {
+			position: relative;
+		  	display: inline-block;
+/*		  	border-bottom: 1px dotted black;
+*/		}
+
+		.infobulle .infobulletext {
+		  	visibility: hidden;
+		  	width: 120px;
+		  	background-color: black;
+		  	color: #fff;
+		  	text-align: center;
+		  	border-radius: 6px;
+		  	padding: 5px 0;
+		  	/* Position the infobulle */
+		  	position: absolute;
+		  	z-index: 1;
+		}
+
+		.infobulle:hover .infobulletext {
+		  	visibility: visible;
 		}
 
 	</style>
