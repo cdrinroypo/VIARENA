@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <!-- Remplacement hyperliens pour Open edX find:(\w*.png) replace:$1 -->
-  <!-- find: (\w*.png(\w*.png) replace: https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@$1 -->
+  <!-- find: (\w*.png) replace: https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@$1 -->
   <head>
     <title>Simulation d'un neurone artificiel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,7 +158,7 @@
 	    var sortie_activation = document.getElementById('affichage_activation');
 /*
 		<span>
-			<img id="image_entree" src="https://cours.edulib.org/asset-v1:Cegep-Matane+VAERN.1FR+P2021+type@asset+block@entree.png"/>
+			<img id="image_entree" src="entree.png"/>
 			<label class="affichage_entree_binaire_0" for="0">0</label>
 			<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
 			       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
@@ -535,12 +535,13 @@
 
 		.entree_binaire_1 {
 			position:relative;
-			left:-31px;
+			left:-32px;
 			bottom:8px;
 		}
 
 		.affichage_entree_binaire_0 {
 			position:relative;
+			left:2px;
 			bottom:35px;			
 		}
 
@@ -565,7 +566,7 @@
 		}
 
 		#trois_points {
-			padding-left:170px;
+			padding-left:175px;
 		}
 
 		#courte_fleche_droite_biais {
