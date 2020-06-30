@@ -131,12 +131,12 @@
 					</button>
 				</span>
 	            <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->
-					<div id="choix_activation" class="choix_activation">
+					<div id="menu_deroulant" class="menu_deroulant">
 						<span class="infobulle">
-							<label class="choix_activation_infobulle">Choix de l'activation du neurone</label>
+							<label class="menu_deroulant_infobulle">Choix de l'activation du neurone</label>
 							<span class="infobulletext">Choix de l'activation du neurone</span>
 					  	</span>
-				  		<select id="activation">
+				  		<select id="choix_activation">
 					    	<option value="0">Choisir l'activation...</option>
 					    	<option value="sigmoide" selected>Courbe en S verticale</option>
 					    	<option value="tanh">Courbe en S horizontale</option>
@@ -291,7 +291,7 @@
 		// https://www.w3schools.com/howto/howto_custom_select.asp
 		var x, i, j, l, ll, selElmnt, a, b, c;
 		/* Look for any elements with the class "custom-select": */
-		x = document.getElementsByClassName("choix_activation");
+		x = document.getElementsByClassName("menu_deroulant");
 		l = x.length;
 		for (i = 0; i < l; i++) {
 		  selElmnt = x[i].getElementsByTagName("select")[0];
@@ -374,8 +374,8 @@
 
 	    function activation() {
 	    	console.log("Bouton Activation!");
-	    	if (document.getElementById("activation").value) {
-	    		fonction_activation = document.getElementById("activation").value;
+	    	if (document.getElementById("choix_activation").value) {
+	    		fonction_activation = document.getElementById("choix_activation").value;
 	    		console.log("fonction_activation=",fonction_activation);
 	    	}
 	    	x = somme_ponderee()
@@ -385,7 +385,7 @@
 			    resultat_activation = sigmoide(x); 
 			    alert("Activation: Courbe en S verticale entre 0 et +1 ou sigmoïde, ou fonction logistique.")
 			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
-			    if (resultat_activation > 0.5) {
+			    if (resultat_activation >= 0.5) {
 			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait «allum&eacute;»."
 			    } else {
 			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas «allum&eacute;»."
@@ -396,10 +396,10 @@
 			    resultat_activation = tangente_hyperbolique(x); 
 			    calcul_a_afficher = "tanh( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
 			    alert("Activation: Courbe en S horizontale entre -1 et +1 ou tangente hyperbolique.");
-			    if (resultat_activation > 0.5) {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait «allum&eacute;»."
+			    if (resultat_activation >= 0.0) {
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro serait «allum&eacute;»."
 			    } else {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas «allum&eacute;»."
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.0 ne serait pas «allum&eacute;»."
 			    }
 				console.log("x = "+ x + " tangente_hyperbolique = "+ resultat_activation);
 			    break;
@@ -693,7 +693,7 @@
 			left:-200px;
 		}
 
-		.choix_activation_infobulle {
+		.menu_deroulant_infobulle {
 			 color:white; 
 		}
 
@@ -711,16 +711,16 @@
 		*/
 
 		/*the container must be positioned relative:*/
-		.choix_activation {
+		.menu_deroulant {
 		  position: relative;
 		  font-family: Arial;
 		  /* Modif */
-		  margin-left:350px;
-		  width:150px;
+		  margin-left: 350px;
+		  width: 150px;
 		  border-radius: 10px;
 		}
 
-		.choix_activation select {
+		.menu_deroulant select {
 		  display: none; /*hide original SELECT element:*/
 		}
 
@@ -734,11 +734,12 @@
 		.select-selected:after {
 		  position: absolute;
 		  content: "";
-/*		  top: 14px;
-*/		  right: 10px;
+		  /* top: 14px; */
+		  right: 10px;
 		  width: 0;
 		  height: 0;
 		  border: 6px solid transparent;
+		  /* border-color: #fff transparent transparent transparent; */
 		  border-color: #000000 transparent transparent transparent;
 		}
 
