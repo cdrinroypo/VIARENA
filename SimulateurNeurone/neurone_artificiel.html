@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <!-- Remplacement hyperliens pour Open edX (\w*.png) $1 -->
   <head>
     <title>Simulation d'un neurone artificiel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,111 +13,87 @@
 		<br><br>
 		<div class="rangee">
 			<div class="colonne_1">
-				<label id="entree_donnees">Données d'entrée
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					-
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					Pondération</label>
-				<br><br><br>
+				<span id="parties_du_simulateur_colonne_1">
+					<label id="entree_donnees">Donn&eacute;es d'entr&eacute;e</label>
+					<label id="ponderation">Pond&eacute;ration</label>
+				</span>
+				<br><br>
 				<span>
-					<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut()">
-						<img id="img_bouton_biais" src="/static/biais.png"></button>
-					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="/static/courte_fleche_droite.png"/>
+					<button id="bouton_biais" class="bouton_entree" type="button" onclick="entrer_valeur_dattribut(this.id)">
+						<img id="img_bouton_biais" src="biais.png"></button>
+						<label id="affichage_entree_binaire_biais_0" class="affichage_entree_binaire_0" for="0">0</label>
+						<input id="entree_bin_biais_0" class="entree_binaire_0" type="radio" disabled
+						       name="entree_bin_biais" value='0' onclick="entrer_valeur_dattribut(this.id)">
+						<label id="affichage_entree_binaire_biais_1" class="affichage_entree_binaire_1" for="1">1</label>
+						<input id="entree_bin_biais_1" class="entree_binaire_1" type="radio" checked="checked"
+							   name="entree_bin_biais" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+					<img id="courte_fleche_droite_biais" class="courte_fleche_droite" src="courte_fleche_droite.png"/>
                     <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->	
 		 	    	<span class="contenant_jauge">
 		 				<input id="jauge_poids_biais" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="sortie_jauge_poids_biais">0.00</span>
+		 				<span id="affichage_jauge_poids_biais">0.00</span>
 		 			</span>
 				</span>
 				<br><br><br>
-				<span>
-					<span class="contenant_jauge">
-						<input id="jauge_entree_1" class="jauge_entree" type="range" min="0.00" max="100" value="0.00" >
-			 			<span id="sortie_jauge_entree_1">0.00</span>
+				<span class="contenant_entree">
+					<span>
+						<img id="image_entree" src="entree.png"/>
+						<label class="affichage_entree_binaire_0" for="0">0</label>
+						<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
+						       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
+						<label class="affichage_entree_binaire_1" for="1">1</label>
+						<input id="entree_bin_1_1" class="entree_binaire_1" type="radio" 
+							   name="entree_bin_1" value='1' onclick="entrer_valeur_dattribut(this.id)">					
 					</span>
-					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png"/>
+					<img class="courte_fleche_droite" src="courte_fleche_droite.png"/>
 		 	    	<span class="contenant_jauge">
 		 				<input id="jauge_poids_1" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="sortie_jauge_poids_1">0.00</span>
+		 				<span id="affichage_jauge_poids_1">0.00</span>
 		 			</span>
 				</span>
 				<br><br><br>
-				<span>
-					<span class="contenant_jauge">
-						<input id="jauge_entree_2" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
-			 			<span id="sortie_jauge_entree_2">0.00</span>
+				<img id="trois_points" src="trois_points.png"/>
+				<br><br><br><br><br><br>
+				<span class="contenant_entree">
+					<span>
+						<img id="image_entree" src="entree.png"/>
+						<label class="affichage_entree_binaire_0" for="0">0</label>
+						<input id="entree_bin_2_0" class="entree_binaire_0" type="radio" checked="checked" 
+						       name="entree_bin_2" value='0' onclick="entrer_valeur_dattribut(this.id)">
+						<label class="affichage_entree_binaire_1" for="1">1</label>
+						<input id="entree_bin_2_1" class="entree_binaire_1" type="radio" 
+							   name="entree_bin_2" value='1' onclick="entrer_valeur_dattribut(this.id)">					
 					</span>
-					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
+					<img class="courte_fleche_droite" src="courte_fleche_droite.png" />
 		 	    	<span class="contenant_jauge">
 		 				<input id="jauge_poids_2" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="sortie_jauge_poids_2">0.00</span>
-		 			</span>
-				</span>
-				<br><br><br><br>
-				<img id="trois_points" src="/static/trois_points.png"/>
-				<br><br><br><br><br>
-				<span>
-					<span class="contenant_jauge">
-						<input id="jauge_entree_3" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
-			 			<span id="sortie_jauge_entree_3">0.00</span>
-					</span>
-					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
-		 	    	<span class="contenant_jauge">
-		 				<input id="jauge_poids_3" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="sortie_jauge_poids_3">0.00</span>
+		 				<span id="affichage_jauge_poids_2">0.00</span>
 		 			</span>
 				</span>
 				<br><br><br>
-				<span>
-					<span class="contenant_jauge">
-						<input id="jauge_entree_4" class="jauge_entree" type="range" min="0.0" max="100" value="0.0" >
-			 			<span id="sortie_jauge_entree_4">0.00</span>
-					</span>
-					<img class="courte_fleche_droite" src="/static/courte_fleche_droite.png" />
-		 	    	<span class="contenant_jauge">
-		 				<input id="jauge_poids_4" class="jauge_poids" type="range" min="-100" max="100" value="0" >
-		 				<span id="sortie_jauge_poids_4">0.00</span>
-		 			</span>
-				</span>
 			</div>
 			<div class="colonne_2">
-				<label id="calcul_neurone">
-					Somme pond&eacute;r&eacute;e
-					&nbsp;
-					-
-					&nbsp;
-					Activation
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					-
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					Sortie
-				</label>
+				<span id="parties_du_simulateur_colonne_1">
+					<label id="somme_ponderee">Somme pond&eacute;r&eacute;e</label>
+					<label id="activation">Activation</label>
+					<label id="sortie_du_neurone">Sortie du neurone</label>
+				</span>
 				<br>
-				<label id="calcul_neurone_2">
-					des entrées
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					du neurone					
-				</label>
-				<br><br><br>
 				<span>
-					<img id="image_connexions_neurone" src="/static/connexions_neurone.png"/>
-					<img id="image_fond_neurone_sommation" src="/static/image_fond_neurone_sommation.png"/>
+					<img id="image_connexions_neurone" src="connexions_neurone.png"/>
+					<img id="image_fond_neurone_sommation" src="image_fond_neurone_sommation.png"/>
 					<button id="bouton_sommation" type="button" onclick="somme_ponderee()">
-						<img id="image_bouton_sommation" src="/static/sommation.png"/>
+						<img id="image_bouton_sommation" src="sommation.png"/>
 					</button>
-					<img id="image_fond_neurone_activation" src="/static/image_fond_neurone_activation.png"/>
+					<img id="image_fond_neurone_activation" src="image_fond_neurone_activation.png"/>
 					<button id="bouton_activation" type="button" onclick="activation()">
-						<img id="image_bouton_activation" src="/static/activation.png"/>
+						<img id="image_bouton_activation" src="activation.png"/>
 					</button>
 					<button id="fleche_sortie"/>
 						<span>
-							<img id="image_fleche_sortie" src="/static/longue_fleche_droite.png"/>
-							<label id="sortie_activation" ></label>
+							<img id="image_fleche_sortie" src="longue_fleche_droite.png"/>
+							<img id="image_sortie_activation" src="sortie.png"/>
+							<label id="affichage_activation" ></label>
 						</span>
 					</button>
 				</span>
@@ -141,60 +118,57 @@
 	<script>
 		
 	  	var sortie_affichage_calcul = document.getElementById('affichage_du_calcul');
-	    var sortie_activation = document.getElementById('sortie_activation');
-	    var sortie_sommation = document.getElementById('sortie_sommation');
-
-	 	/* 	
-			<span class="contenant_jauge">
-				<input id="jauge_entree_1" class="jauge_entree" type="range" min="-100" max="100" value="0" >
-			 	<span id="sortie_jauge_entree_1">0</span>
-			</span>
-		*/
-
+	    var sortie_activation = document.getElementById('affichage_activation');
+/*
+		<span>
+			<img id="image_entree" src="entree.png"/>
+			<label class="affichage_entree_binaire_0" for="0">0</label>
+			<input id="entree_bin_1_0" class="entree_binaire_0" type="radio" checked="checked" 
+			       name="entree_bin_1" value='0' onclick="entrer_valeur_dattribut(this.id)">
+			<label class="affichage_entree_binaire_1" for="1">1</label>
+			<input id="entree_bin_1_1" class="entree_binaire_1" type="radio" 
+				   name="entree_bin_1" value='1' onclick="entrer_valeur_dattribut(this.id)">					
+		</span>
+*/
 		var entree_biais = 1.0;
+		var entree_1 = 0.0;
+		var entree_2 = 0.0;
 
-		function entrer_valeur_dattribut() {
+		function entrer_valeur_dattribut(bouton_id) {
+			// alert("bouton_id="+bouton_id)
+			switch(bouton_id) {
+			  case "bouton_biais":
 				alert("Rien à saisir pour le biais dont la valeur est fixée à 1.0");	
-		}
-
-		var jauge_entree_1 = document.getElementById("jauge_entree_1");
-		var sortie_jauge_entree_1 = document.getElementById("sortie_jauge_entree_1");
-		var entree_1 = parseFloat(document.getElementById("sortie_jauge_entree_1").innerHTML);
-		sortie_jauge_entree_1.innerHTML = entree_1.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_entree_1.oninput = function() {
-			entree_1 = (jauge_entree_1.value/100).toFixed(2);
-			sortie_jauge_entree_1.textContent = entree_1; 
-		}
-
-		var jauge_entree_2 = document.getElementById("jauge_entree_2");
-		var sortie_jauge_entree_2 = document.getElementById("sortie_jauge_entree_2");
-		var entree_2 = parseFloat(document.getElementById("sortie_jauge_entree_2").innerHTML);
-		sortie_jauge_entree_2.innerHTML = entree_2.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_entree_2.oninput = function() {
-			entree_2 = (jauge_entree_2.value/100).toFixed(2);
-			sortie_jauge_entree_2.textContent = entree_2; 
-		}
-
-		var jauge_entree_3 = document.getElementById("jauge_entree_3");
-		var sortie_jauge_entree_3 = document.getElementById("sortie_jauge_entree_3");
-		var entree_3 = parseFloat(document.getElementById("sortie_jauge_entree_3").innerHTML);
-		sortie_jauge_entree_3.innerHTML = entree_3.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_entree_3.oninput = function() {
-			entree_3 = (jauge_entree_3.value/100).toFixed(2);
-			sortie_jauge_entree_3.textContent = entree_3; 
-		}
-
-		var jauge_entree_4 = document.getElementById("jauge_entree_4");
-		var sortie_jauge_entree_4 = document.getElementById("sortie_jauge_entree_4");
-		var entree_4 = parseFloat(document.getElementById("sortie_jauge_entree_4").innerHTML);
-		sortie_jauge_entree_4.innerHTML = entree_4.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_entree_4.oninput = function() {
-			entree_4 = (jauge_entree_4.value/100).toFixed(2);
-			sortie_jauge_entree_4.textContent = entree_4; 
+				console.log("Rien à saisir pour le biais dont la valeur est fixée à 1.0");
+			    break;
+			  case "entree_bin_biais_1":
+				alert("Rien à saisir pour le biais dont la valeur est fixée à 1.0");	
+				console.log("Rien à saisir pour le biais dont la valeur est fixée à 1.0");
+			    break;
+			  case "entree_bin_1_0":
+				console.log("entree_1 avant: "+ entree_1);
+				entree_1 = 0.0;
+				console.log("entree_1 après: "+ entree_1);
+			    break;
+			  case "entree_bin_1_1":
+				console.log("entree_1 avant: "+ entree_1);
+				entree_1 = 1.0;
+				console.log("entree_1 après: "+ entree_1);
+			    break;
+			  case "entree_bin_2_0":
+				console.log("entree_2 avant: "+ entree_2);
+				entree_2 = 0.0;
+				console.log("entree_2 après: "+ entree_2);
+			    break;
+			  case "entree_bin_2_1":
+				console.log("entree_2 avant: "+ entree_2);
+				entree_2 = 1.0;
+				console.log("entree_2 après: "+ entree_2);
+			    break;
+			  default:
+				console.log("*** ERREUR entrer_valeur_dattribut ***");
+			    alert("*** ERREUR entrer_valeur_dattribut ***");
+			}
 		}
 
 	 	/* 	
@@ -205,63 +179,42 @@
 		*/
 
 		var jauge_poids_biais = document.getElementById("jauge_poids_biais");
-		var sortie_jauge_poids_biais = document.getElementById("sortie_jauge_poids_biais");
-		var poids_biais = parseFloat(document.getElementById("sortie_jauge_poids_biais").innerHTML);
-		sortie_jauge_poids_biais.innerHTML = poids_biais.toFixed(2); // Afficher la valeur par défaut de la jauge
+		var affichage_jauge_poids_biais = document.getElementById("affichage_jauge_poids_biais");
+		var poids_biais = parseFloat(document.getElementById("affichage_jauge_poids_biais").innerHTML);
+		affichage_jauge_poids_biais.innerHTML = poids_biais.toFixed(2); // Afficher la valeur par défaut de la jauge
 		// Mise à jour de la sortie d'affichage de la jauge
 		jauge_poids_biais.oninput = function() {
 			poids_biais = (jauge_poids_biais.value/100).toFixed(2);
-			sortie_jauge_poids_biais.textContent = poids_biais; 
+			affichage_jauge_poids_biais.textContent = poids_biais; 
 		}
 
 		var jauge_poids_1 = document.getElementById("jauge_poids_1");
-		var sortie_jauge_poids_1 = document.getElementById("sortie_jauge_poids_1");
-		var poids_1 = parseFloat(document.getElementById("sortie_jauge_poids_1").innerHTML);
-		sortie_jauge_poids_1.innerHTML = poids_1.toFixed(2); // Afficher la valeur par défaut de la jauge
+		var affichage_jauge_poids_1 = document.getElementById("affichage_jauge_poids_1");
+		var poids_1 = parseFloat(document.getElementById("affichage_jauge_poids_1").innerHTML);
+		affichage_jauge_poids_1.innerHTML = poids_1.toFixed(2); // Afficher la valeur par défaut de la jauge
 		// Mise à jour de la sortie d'affichage de la jauge
 		jauge_poids_1.oninput = function() {
 			poids_1 = (jauge_poids_1.value/100).toFixed(2);
-			sortie_jauge_poids_1.textContent = poids_1; 
+			affichage_jauge_poids_1.textContent = poids_1; 
 		}
 
 		var jauge_poids_2 = document.getElementById("jauge_poids_2");
-		var sortie_jauge_poids_2 = document.getElementById("sortie_jauge_poids_2");
-		var poids_2 = parseFloat(document.getElementById("sortie_jauge_poids_2").innerHTML);
-		sortie_jauge_poids_2.innerHTML = poids_2.toFixed(2); // Afficher la valeur par défaut de la jauge
+		var affichage_jauge_poids_2 = document.getElementById("affichage_jauge_poids_2");
+		var poids_2 = parseFloat(document.getElementById("affichage_jauge_poids_2").innerHTML);
+		affichage_jauge_poids_2.innerHTML = poids_2.toFixed(2); // Afficher la valeur par défaut de la jauge
 		// Mise à jour de la sortie d'affichage de la jauge
 		jauge_poids_2.oninput = function() {
 			poids_2 = (jauge_poids_2.value/100).toFixed(2);
-			sortie_jauge_poids_2.textContent = poids_2; 
-		}
-
-		var jauge_poids_3 = document.getElementById("jauge_poids_3");
-		var sortie_jauge_poids_3 = document.getElementById("sortie_jauge_poids_3");
-		var poids_3 = parseFloat(document.getElementById("sortie_jauge_poids_3").innerHTML);
-		sortie_jauge_poids_3.innerHTML = poids_3.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_poids_3.oninput = function() {
-			poids_3 = (jauge_poids_3.value/100).toFixed(2);
-			sortie_jauge_poids_3.textContent = poids_3; 
-		}
-
-		var jauge_poids_4 = document.getElementById("jauge_poids_4");
-		var sortie_jauge_poids_4 = document.getElementById("sortie_jauge_poids_4");
-		var poids_4 = parseFloat(document.getElementById("sortie_jauge_poids_4").innerHTML);
-		sortie_jauge_poids_4.innerHTML = poids_4.toFixed(2); // Afficher la valeur par défaut de la jauge
-		// Mise à jour de la sortie d'affichage de la jauge
-		jauge_poids_4.oninput = function() {
-			poids_4 = (jauge_poids_4.value/100).toFixed(2);
-			sortie_jauge_poids_4.textContent = poids_4; 
+			affichage_jauge_poids_2.textContent = poids_2; 
 		}
 		
 	    var somme_ponderee_entrees = 0.0;
 	    // Fonction sommation - somme ponderée des entrées
 	    function somme_ponderee() {
 	    	sortie_activation.innerHTML = ""
-	    	somme_ponderee_entrees = (entree_biais*poids_biais+entree_1*poids_1+
-	    		entree_2*poids_2+entree_3*poids_3+entree_4*poids_4).toFixed(2);
+	    	somme_ponderee_entrees = (entree_biais*poids_biais+entree_1*poids_1+entree_2*poids_2).toFixed(2);
 	    	console.log("Somme pondérée: "+somme_ponderee_entrees);
-//	    	alert("Somme pondérée: "+ somme_ponderee_entrees);
+	    	// alert("Somme pondérée: "+ somme_ponderee_entrees);
 	    	affichage_somme_ponderee = afficher_somme_ponderee();
 	    	sortie_affichage_calcul.innerHTML = affichage_somme_ponderee + " = " + somme_ponderee_entrees;
 	    	return somme_ponderee_entrees;
@@ -273,8 +226,6 @@
 	    	affichage_somme_ponderee += entree_biais + " x " + poids_biais + " + ";
 	    	affichage_somme_ponderee += entree_1 + " x " + poids_1 + " + ";
 	    	affichage_somme_ponderee += entree_2 + " x " + poids_2 + " + ";
-	    	affichage_somme_ponderee += entree_3 + " x " + poids_3 + " + ";
-	   	    affichage_somme_ponderee += entree_4 + " x " + poids_4;
 	   	    return affichage_somme_ponderee;
 	    }
 
@@ -444,8 +395,11 @@
 
 		#simulateur_neurone {
 		  border: 4px solid;
-		  border-radius: 10px 10px 10px 10px;
+		  border-radius: 10px;
 		  border-color: #3D85C6;
+		  width: 100%;
+		  min-width: 1580px;
+		  max-width: 1580px;
 		}
 
 		#titre_simulateur {
@@ -455,8 +409,10 @@
 		}
 
 		.rangee{
-			margin: 0 auto;
-		}
+			/* margin: 0 auto; */
+/*		  	min-width: 1000px;
+		  	max-width: 1000px;
+*/		}
 		
 		.rangee:after {
 	  		content: "";
@@ -466,55 +422,151 @@
 
 		.colonne_1 {
 	  		float: left;
-	  		width: 30%;
-			display: table;
+/*	  		width: 30%;
+*/			display: table;
 			margin: 0 auto;
 			margin-right: 0px;
 			border-right: 0px;
 	  		padding-right: 0px;
+		  	min-width: 480px;
+		  	max-width: 480px;
+		}
+
+		.contenant_entree {
+			margin-left:40px;
+		}
+
+		#parties_du_simulateur_colonne_1 {
 		}
 
 		#entree_donnees {
 			font-weight: bold;
-			font-size: 150%;			
+			font-size: 150%;
+			margin-left:10px;
+		}
+
+		#ponderation {
+			font-weight: bold;
+			font-size: 150%;
+			margin-left:85px;		
+		}
+
+		#affichage_entree_binaire_biais_1 {
+			position:relative;
+			left:-53px;
+		}
+
+		#affichage_entree_binaire_biais_0 {
+			position:relative;
+			color:#d1d1d1;
+			left:-15px;
+		}
+
+		#affichage_jauge_poids_biais {
+			position:relative;
+			left:-20px;
+		}
+
+		#entree_bin_biais_1 {
+			position:relative;
+			left:-50px;
+		}
+
+		#entree_bin_biais_0 {
+			position:relative;
+			left:-14px;
+		}
+
+		.entree_binaire_0 {
+			position:relative;
+			left:5px;
+			bottom:35px;
+		}
+
+		.entree_binaire_1 {
+			position:relative;
+			left:-31px;
+			bottom:8px;
+		}
+
+		.affichage_entree_binaire_0 {
+			position:relative;
+			bottom:35px;			
+		}
+
+		.affichage_entree_binaire_1 {
+			position:relative;
+			left:-36px;
+			bottom:9px;			
 		}
 
 		#bouton_biais {
-			padding-left:30px;		
+			padding-left:55px;
+			margin-right:10px;	
 		}
 
 		#img_bouton_biais {
-			padding-left:28px;
+        /* padding-left:28px; */
+		}
+
+		#jauge_poids_biais {
+			position:relative;
+			left:-20px;
 		}
 
 		#trois_points {
-			padding-left:190px;
+			padding-left:170px;
 		}
 
 		#courte_fleche_droite_biais {
-			padding-left:60px;
+			position: relative;
+			left:-40px;
 		}
 		
 		.courte_fleche_droite{
-			padding-bottom:19px;
+			position: relative;
+			left:-20px;
+			bottom:19px;
 		}
 
 		.colonne_2 {
 	  		float: left;
-	  		width: 70%;
-			display: table;
+/*	  		width: 70%;
+*/			display: table;
 			margin: 0 auto;
 			padding-bottom:0px;
 			margin-left: 0px;
 			border-left: 0px;
 	  		padding-left: 0px;
+		  	min-width: 1100px;
+		  	max-width: 1100px;
 		}
-		
+	
+		#parties_du_simulateur_colonne_2 {
+		}
+
+		#somme_ponderee {
+			font-weight: bold;
+			font-size: 150%;
+			margin-left:160px;						
+		}
+
+		#activation {
+			font-weight: bold;
+			font-size: 150%;
+			margin-left:25px;						
+		}
+	
+		#sortie_du_neurone {
+			font-weight: bold;
+			font-size: 150%;
+			margin-left:200px;						
+		}
 
 		#image_connexions_neurone {
-			padding-top:0px;
+			padding-top:70px;
+			/* visibility: hidden; */
 		}
-
 
 		#calcul_neurone {
 			margin-left: 180px;
@@ -529,7 +581,7 @@
 		}
 
 		#image_fond_neurone_sommation {
-			padding-bottom:100px;
+			padding-bottom:50px;
 			margin-right:0px;
 			border-right:0px;
 	  		padding-right:0px;			
@@ -548,11 +600,11 @@
 	  		padding-left:0px;			
 			position:relative;
 			left:-118px;
-			bottom:154px;
+			bottom:104px;
 		}
 		
 		#image_fond_neurone_activation {
-			padding-bottom:100px;
+			padding-bottom:50px;
 			margin-right:0px;
 			border-right:0px;
 	  		padding-right:0px;			
@@ -572,7 +624,7 @@
 	  		padding-left: 0px;
 			position:relative;
 			left:-242px; 
-            bottom:154px;
+            bottom:104px;
 		}	
 
 		.bouton_sortie {
@@ -584,17 +636,24 @@
 
 		#image_fleche_sortie {
 			position:relative;
-			padding-bottom:200px;
-			left:-220px;
+			bottom:140px;
+			left:-210px;
 		}
 
-		#sortie_activation {
-			font-weight: bold;
-			font-size: 150%;
+		#image_sortie_activation {
 			position:relative; 
-			bottom:204px;
-			left:-230px;
+			bottom:130px;
+			left:-200px;
 		}
+
+		#affichage_activation {
+			font-weight: bold;
+			font-size: 200%;
+			position:relative; 
+			bottom:154px;
+			left:-200px;
+		}
+
 
 		/*  
 		    <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->
@@ -605,9 +664,9 @@
 		  position: relative;
 		  font-family: Arial;
 		  /* Modif */
-		  margin-left:380px;
+		  margin-left:350px;
 		  width:150px;
-		  border-radius: 10px 10px 10px 10px;
+		  border-radius: 10px;
 		}
 
 		.choix_activation select {
@@ -726,7 +785,7 @@
 		  /* height: 24px; */
 		  height: 59px;
 		  border: 0;
-		  background: url("/static/entree.png");
+		  background: url("entree.png");
 		  cursor: pointer;
 		}
 
@@ -736,7 +795,7 @@
 		  	/* height: 24px; */
 		  	height: 59px;
 	  		border: 0;
-		  	background: url("/static/entree.png");
+		  	background: url("entree.png");
 		  	cursor: pointer;
 		}
 
@@ -746,7 +805,7 @@
 		  	/* height: 24px; */
 		  	height: 59px;
 	  		border: 0;
-		  	background: url("/static/ponderation.png");
+		  	background: url("ponderation.png");
 		  	cursor: pointer;
 		}
 
@@ -774,7 +833,7 @@
 		  /* height: 24px; */
 		  height: 62px;
 		  border: 0;
-		  background: url("/static/ponderation.png");
+		  background: url("ponderation.png");
 		  cursor: pointer;
 		}
 
@@ -784,7 +843,7 @@
 		  	/* height: 24px; */
 		  	height: 62px;
 	  		border: 0;
-		  	background: url("/static/ponderation.png");
+		  	background: url("ponderation.png");
 		  	cursor: pointer;
 		}
 
@@ -794,7 +853,7 @@
 		  	/* height: 24px; */
 		  	height: 62px;
 	  		border: 0;
-		  	background: url("/static/ponderation.png");
+		  	background: url("ponderation.png");
 		  	cursor: pointer;
 		}
 
