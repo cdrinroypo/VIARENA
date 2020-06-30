@@ -383,14 +383,24 @@
 	 		switch(fonction_activation) {
 			  case "sigmoide":
 			    resultat_activation = sigmoide(x); 
-			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
 			    alert("Activation: Courbe en S verticale entre 0 et +1 ou sigmoïde, ou fonction logistique.")
+			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
+			    if (resultat_activation > 0.5) {
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait «allum&eacute;»."
+			    } else {
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas «allum&eacute;»."
+			    }
 				console.log("x = "+ x + " sigmoide = "+ resultat_activation);
 			    break;
 			  case "tanh":
 			    resultat_activation = tangente_hyperbolique(x); 
 			    calcul_a_afficher = "tanh( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
 			    alert("Activation: Courbe en S horizontale entre -1 et +1 ou tangente hyperbolique.");
+			    if (resultat_activation > 0.5) {
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait «allum&eacute;»."
+			    } else {
+			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas «allum&eacute;»."
+			    }
 				console.log("x = "+ x + " tangente_hyperbolique = "+ resultat_activation);
 			    break;
 			  case "relu":
