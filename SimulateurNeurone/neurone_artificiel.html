@@ -153,6 +153,119 @@
 		</div>
 	</fieldset>
 
+	<!-- https://www.w3schools.com/howto/howto_js_tabs.asp -->
+	<div id="tab_simulateur" class="tab">
+	  <button id="tab_ouvert_par_defaut" class="tablinks" onclick="ouvrir_tab(event,'description_simulateur')">Description</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'familiarisation')">Familiarisation</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'exercices')">Exercices dirigés</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'ET')">Neurone ET</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'OU')">Neurone OU</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'NON')">Neurone NON</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'NON_ET')">Neurone NON ET</button>
+	  <button class="tablinks" onclick="ouvrir_tab(event,'NON_OU')">Neurone NON OU</button>
+	</div>
+    
+	<div id="description_simulateur" class="tabcontent">
+
+		<h1>Simulation d'un neurone artificiel</h1>
+
+		<p> De gauche à droite, le simulateur comporte d’abord un série d’entrées (ou signaux) représenté par de petits boutons radios permettant de choisir entre 0 ou 1.<br/>À chaque entrée on associe un poids (la force du signal) représentée par une glissière avec l’icône d’haltérophile.<br/>Pour simplifier, nous avons limité notre neurone artificiel à trois entrées: le bias et deux entrées (entrée_1 et entrée_2).<br/>En réalité, un neurone artificiel peut comporter des milliers d’entrées en plus du biais qui est généralement toujours présent. Nous verrons plus tard à quoi sert le biais.</p>
+
+		<p>Ces signaux avec leurs poids entrent ensuite dans le corps du neurone qui fait des calculs à partir de ces entrées.<br>Les calculs se font en deux étapes: une première étape est la somme pondérée des entrées (représentée par le bouton avec un + rouge) et la deuxième étape est l’activation du neurone (le bouton avec la courbe en S rouge).</p>
+
+		<p>La somme pondérée consiste à additionner la valeur de chaque entrée qui est multipliée par son poids associé. Dans le cas de notre neurone simple, le calcul est: somme_pondérée = entrée_1 x poids_1 + entrée_2 x poids_2 + biais x poids_biais.</p> 
+
+		<p>Le calcul de l’activation prend le résultat du calcul précédent (i.e. la somme pondérée) et lui applique une fonction mathématique dite fonction d’activation. Il existe plusieurs fonctions d’activation différentes et notre simulateur vous propose de choisir parmi les trois plus répandues (grâce à un menu à droite sous le corps du neurone) :<p> 
+
+		<ol>
+			<li>La courbe en S positive (ou sigmoïde) qui produit des résultats entre 0 et 1 avec un seuil de 0.5</li> 
+
+			<li>La courbe en S centrée sur zéro (ou tangente hyperbolique) qui donne un résultat entre -1 et +1 avec un seuil de 0.</li> 
+
+			<li>La rampe droite à 45 degrés (ou unité linéaire rectifiée) qui retourne un résultat entre 0 et +infini avec un seuil de 0.<br>Notez que l’unité linéaire rectifiée (en anglais ReLU) est la fonction d’activation le plus souvent utilisée dans les réseaux de neurones profonds.</li> 
+		</ol>
+
+		<p>Le résultat du calcul d’activation se retrouve à la sortie du neurone située à l’extrême droite. De petits éclairs s’ajoutent pour indiquer que le neurone est déclenché. C’est-à-dire que la valeur de sa sortie dépasse un seuil de déclenchement qui dépend de la fonction d’activation et du type d’application.</p>
+
+		<p>Finalement, une fenêtre en bas à droite affiche le calcul fait par le neurone.</p>
+
+	</div>
+
+	<div id="familiarisation" class="tabcontent">
+
+		<h1>Familiarisation avec le fonctionnement du neurone artificiel</h1>
+
+		<p>En guise de familiarisation, commencez par jouer «librement» avec les données d’entrée 1 et 2 qui sont binaires et peuvent donc prendre les valeurs 0 ou 1 (en cliquant sur des boutons radios) et les glissières avec l’icône d’haltérophile qui servent à pondérer ces entrées par une valeur entre -1 et +1. Vous pouvez également contrôler le poids appliqué au biais fixé à 1, en haut à gauche.</p>
+
+		<p>Une fois les entrées choisies et pondérées, vous pouvez calculer la sortie du neurone en cliquant le bouton avec une courbe en S ce qui implique le calcul de la somme pondérée des entrées suivi de l’activation du neurone. Vous pouvez également afficher uniquement le résultat du calcul de la somme pondérée en cliquant sur le bouton avec un +.</p>
+
+		<p>Vous pouvez changer l’activation du neurone (sa fonction d’activation) avec le menu identifié «Choix d'activation» situé un peu à droite en dessous du corps du neurone.</p> 
+		<br/><br/>
+
+	</div>
+
+	<div id="exercices" class="tabcontent">
+
+		<h1>Exercices dirigés - les opérations logiques</h1>
+
+		<p>Le biais et les poids_1 et poids_2 sont les paramètres du neurone.  Et en changeant ces paramètres, ce neurone fonctionnera comme des portes logiques telles que ET (en anglais AND), OU (en anglais OR), NON (en anglais NOT), NON-ET (en anglais NAND) et NON-OU (en anglais NOR).</p>
+
+		<p><strong>Note:</strong> Inutile de vous échiner à trouver la formule magique pour créer un opérateur OU EXCLUSIF (en anglais XOR) ou NON OU EXCLUSIF (en anglais XNOR) avec un seul neurone. Cela fait partie des limitations connues et qui ont été à l'origine d'une certaine incompréhension dans les années 60. En fait, il faut au moins deux couches de neurones pour créer un OU EXCLUSIF. 
+	</div>
+	    
+	<div id="ET" class="tabcontent">
+		<label class="titre_exercice">Neurone ET</label>
+		<ol>
+			<li>Placez le poids du biais aux environs de -0.60<br/>Rappelez-vous que la valeur du biais est toujours fixée à 1.</li>
+			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».<br/>
+			Le seuil de déclenchement de la sigmoïde se trouve au milieu de l’intervalle soit 0.5</li>
+			<li>Réglez les entrées 1 et 2 à 0.50</li>
+			<li>Vérifiez que le neurone se comporte comme un opérateur logique ET</li>
+		</ol>
+	</div>
+
+	<div id="OU" class="tabcontent">
+		<label class="titre_exercice">Neurone OU</label>
+		<ol>
+			<li>Placez le poids du biais aux environs de -0.25.</li>
+			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Réglez les entrées 1 et 2 à 0.50</li>
+			<li>Vérifiez que le neurone se comporte comme un opérateur logique OU</li>
+		</ol>
+	</div>
+
+	<div id="NON" class="tabcontent">
+		<label class="titre_exercice">Neurone NON</label>
+		<ol>
+			<li>Placez d’abord le poids du biais aux environs de 0.5</li>
+			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Ensuite, éliminez l’effet de l’entrée 2 en la fixant à 0.<br/>L’opération de négation se fera uniquement sur l’entrée 1.</li>
+			<li>Réglez l’entrée 1 à -0.7</li>
+			<li>Vérifiez que le neurone se comporte comme un opérateur logique NON</li>
+		</ol>
+	</div>
+
+	<div id="NON_ET" class="tabcontent">
+		<label class="titre_exercice">Neurone NON ET</label>
+		<ol>
+			<li>Placez d’abord le poids du biais aux environs de 0.6</li>
+			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Réglez les entrées 1 et 2 à -0.50</li>
+			<li>Vérifiez que le neurone se comporte comme un opérateur logique NON ET</li>
+		</ol>
+	</div>
+
+
+	<div id="NON_OU" class="tabcontent">
+		<label class="titre_exercice">Neurone NON OU</label>
+		<ol>
+			<li>Placez d’abord le poids du biais aux environs de 0.25</li>
+			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Réglez les entrées 1 et 2 à -0.50</li>
+			<li>Vérifiez que le neurone se comporte comme un opérateur logique NON OU</li>
+		</ol>
+	</div>
+
 	<script>
 		
 	  	var sortie_affichage_calcul = document.getElementById('affichage_du_calcul');
@@ -444,6 +557,22 @@
 	    	return (Math.round(num * base) / base).toFixed(precision);
 	    }
 
+		document.getElementById("tab_ouvert_par_defaut").click();
+
+	    function ouvrir_tab(evt, tabName) {
+	    	var i, tabcontent, tablinks;
+	    	tabcontent = document.getElementsByClassName("tabcontent");
+	    	for (i = 0; i < tabcontent.length; i++) {
+	    		tabcontent[i].style.display = "none";
+	    	}
+	    	tablinks = document.getElementsByClassName("tablinks");
+	    	for (i = 0; i < tablinks.length; i++) {
+	    		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    	}
+	    	document.getElementById(tabName).style.display = "block";
+	    	evt.currentTarget.className += " active";
+	    }
+
 	</script>
 
 	<style>
@@ -456,6 +585,15 @@
 		* {
 			background-color: white; 
 			border:none;
+		}
+
+
+		p {
+			font-size: 150%;
+		}
+
+		li {
+			font-size: 130%;
 		}
 
 		/* Create two columns that floats next to each other */
@@ -968,6 +1106,59 @@
 
 		.infobulle:hover .infobulletext {
 		  	visibility: visible;
+		}
+
+		#tab_simulateur {
+			min-width: 1580px;
+		  	max-width: 1580px;
+		}
+
+		#tab_exercices {
+			min-width: 1580px;
+		  	max-width: 1580px;
+		}
+
+		.titre_exercice {
+			font-size: 150%;
+			font-weight: bold;	
+		}
+
+		/* Style the tab */
+		/* https://www.w3schools.com/howto/howto_js_tabs.asp */
+		.tab {
+		  overflow: hidden;
+		  border: 1px solid #ccc;
+		  background-color: #f1f1f1;
+		}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+		  background-color: inherit;
+		  float: left;
+		  border: none;
+		  outline: none;
+		  cursor: pointer;
+		  padding: 14px 16px;
+		  transition: 0.3s;
+		  font-size: 17px;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+		  background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+		  background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+		  display: none;
+		  padding: 6px 12px;
+		  border: 1px solid #ccc;
+		  border-top: none;
 		}
 
 	</style>
