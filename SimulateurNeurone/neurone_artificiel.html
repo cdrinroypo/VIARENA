@@ -169,25 +169,25 @@
 
 		<h1>Simulation d'un neurone artificiel</h1>
 
-		<p> De gauche &agrave; droite, le simulateur comporte d’abord un s&eacute;rie d’entr&eacute;es (ou signaux) repr&eacute;sent&eacute; par de petits boutons radios permettant de choisir entre 0 ou 1.<br/>À chaque entr&eacute;e on associe un poids (la force du signal) repr&eacute;sent&eacute;e par une glissi&egrave;re avec l’icône d’halt&eacute;rophile.<br/>Pour simplifier, nous avons limit&eacute; notre neurone artificiel &agrave; trois entr&eacute;es: le bias et deux entr&eacute;es (entr&eacute;e_1 et entr&eacute;e_2).<br/>En r&eacute;alit&eacute;, un neurone artificiel peut comporter des milliers d’entr&eacute;es en plus du biais qui est g&eacute;n&eacute;ralement toujours pr&eacute;sent. Nous verrons plus tard &agrave; quoi sert le biais.</p>
+		<p> De gauche &agrave; droite, le simulateur comporte d'abord un s&eacute;rie d'entr&eacute;es (ou signaux) repr&eacute;sent&eacute; par de petits boutons radios permettant de choisir entre 0 ou 1.<br/>&Agrave; chaque entr&eacute;e on associe un poids (la force du signal) repr&eacute;sent&eacute;e par une glissi&egrave;re avec l'ic&ocirc;ne d'halt&eacute;rophile.<br/>Pour simplifier, nous avons limit&eacute; notre neurone artificiel &agrave; trois entr&eacute;es: le bias et deux entr&eacute;es (entr&eacute;e_1 et entr&eacute;e_2).<br/>En r&eacute;alit&eacute;, un neurone artificiel peut comporter des milliers d'entr&eacute;es en plus du biais qui est g&eacute;n&eacute;ralement toujours pr&eacute;sent. Nous verrons plus tard &agrave; quoi sert le biais.</p>
 
-		<p>Ces signaux avec leurs poids entrent ensuite dans le corps du neurone qui fait des calculs &agrave; partir de ces entr&eacute;es.<br>Les calculs se font en deux &eacute;tapes: une premi&egrave;re &eacute;tape est la somme pond&eacute;r&eacute;e des entr&eacute;es (repr&eacute;sent&eacute;e par le bouton avec un + rouge) et la deuxi&egrave;me &eacute;tape est l’activation du neurone (le bouton avec la courbe en S rouge).</p>
+		<p>Ces signaux avec leurs poids entrent ensuite dans le corps du neurone qui fait des calculs &agrave; partir de ces entr&eacute;es.<br>Les calculs se font en deux &eacute;tapes: une premi&egrave;re &eacute;tape est la somme pond&eacute;r&eacute;e des entr&eacute;es (repr&eacute;sent&eacute;e par le bouton avec un + rouge) et la deuxi&egrave;me &eacute;tape est l'activation du neurone (le bouton avec la courbe en S rouge).</p>
 
 		<p>La somme pond&eacute;r&eacute;e consiste &agrave; additionner la valeur de chaque entr&eacute;e qui est multipli&eacute;e par son poids associ&eacute;. Dans le cas de notre neurone simple, le calcul est: somme_pond&eacute;r&eacute;e = entr&eacute;e_1 x poids_1 + entr&eacute;e_2 x poids_2 + biais x poids_biais.</p> 
 
-		<p>Le calcul de l’activation prend le r&eacute;sultat du calcul pr&eacute;c&eacute;dent (i.e. la somme pond&eacute;r&eacute;e) et lui applique une fonction math&eacute;matique dite fonction d’activation. Il existe plusieurs fonctions d’activation diff&eacute;rentes et notre simulateur vous propose de choisir parmi les trois plus r&eacute;pandues (grâce &agrave; un menu &agrave; droite sous le corps du neurone) :<p> 
+		<p>Le calcul de l'activation prend le r&eacute;sultat du calcul pr&eacute;c&eacute;dent (i.e. la somme pond&eacute;r&eacute;e) et lui applique une fonction math&eacute;matique dite fonction d'activation. Il existe plusieurs fonctions d'activation diff&eacute;rentes et notre simulateur vous propose de choisir parmi les trois plus r&eacute;pandues (gr&acirc;ce &agrave; un menu &agrave; droite sous le corps du neurone) :<p> 
 
 		<ol>
-			<li>La courbe en S positive (ou sigmoïde) qui produit des r&eacute;sultats entre 0 et 1 avec un seuil de 0.5</li> 
+			<li>La courbe en S positive (ou sigmo&iuml;de) qui produit des r&eacute;sultats entre 0 et 1 avec un seuil de 0.5</li> 
 
 			<li>La courbe en S centr&eacute;e sur z&eacute;ro (ou tangente hyperbolique) qui donne un r&eacute;sultat entre -1 et +1 avec un seuil de 0.</li> 
 
-			<li>La rampe droite &agrave; 45 degr&eacute;s (ou unit&eacute; lin&eacute;aire rectifi&eacute;e) qui retourne un r&eacute;sultat entre 0 et +infini avec un seuil de 0.<br>Notez que l’unit&eacute; lin&eacute;aire rectifi&eacute;e (en anglais ReLU) est la fonction d’activation le plus souvent utilis&eacute;e dans les r&eacute;seaux de neurones profonds.</li> 
+			<li>La rampe droite &agrave; 45 degr&eacute;s (ou unit&eacute; lin&eacute;aire rectifi&eacute;e) qui retourne un r&eacute;sultat entre 0 et +infini avec un seuil de 0.<br>Notez que l'unit&eacute; lin&eacute;aire rectifi&eacute;e (en anglais ReLU) est la fonction d'activation le plus souvent utilis&eacute;e dans les r&eacute;seaux de neurones profonds.</li> 
 		</ol>
 
-		<p>Le r&eacute;sultat du calcul d’activation se retrouve &agrave; la sortie du neurone situ&eacute;e &agrave; l’extrême droite. De petits &eacute;clairs s’ajoutent pour indiquer que le neurone est d&eacute;clench&eacute;. C’est-&agrave;-dire que la valeur de sa sortie d&eacute;passe un seuil de d&eacute;clenchement qui d&eacute;pend de la fonction d’activation et du type d’application.</p>
+		<p>Le r&eacute;sultat du calcul d'activation se retrouve &agrave; la sortie du neurone situ&eacute;e &agrave; l'extr&ecirc;me droite. De petits &eacute;clairs s'ajoutent pour indiquer que le neurone est d&eacute;clench&eacute;. C'est-&agrave;-dire que la valeur de sa sortie d&eacute;passe un seuil de d&eacute;clenchement qui d&eacute;pend de la fonction d'activation et du type d'application.</p>
 
-		<p>Finalement, une fenêtre en bas &agrave; droite affiche le calcul fait par le neurone.</p>
+		<p>Finalement, une fen&ecirc;tre en bas &agrave; droite affiche le calcul fait par le neurone.</p>
 
 	</div>
 
@@ -195,11 +195,11 @@
 
 		<h1>Familiarisation avec le fonctionnement du neurone artificiel</h1>
 
-		<p>En guise de familiarisation, commencez par jouer «librement» avec les donn&eacute;es d’entr&eacute;e 1 et 2 qui sont binaires et peuvent donc prendre les valeurs 0 ou 1 (en cliquant sur des boutons radios) et les glissi&egrave;res avec l’icône d’halt&eacute;rophile qui servent &agrave; pond&eacute;rer ces entr&eacute;es par une valeur entre -1 et +1. Vous pouvez &eacute;galement contrôler le poids appliqu&eacute; au biais fix&eacute; &agrave; 1, en haut &agrave; gauche.</p>
+		<p>En guise de familiarisation, commencez par jouer &raquo;librement&raquo; avec les donn&eacute;es d'entr&eacute;e 1 et 2 qui sont binaires et peuvent donc prendre les valeurs 0 ou 1 (en cliquant sur des boutons radios) et les glissi&egrave;res avec l'ic&ocirc;ne d'halt&eacute;rophile qui servent &agrave; pond&eacute;rer ces entr&eacute;es par une valeur entre -1 et +1. Vous pouvez &eacute;galement contrôler le poids appliqu&eacute; au biais fix&eacute; &agrave; 1, en haut &agrave; gauche.</p>
 
-		<p>Une fois les entr&eacute;es choisies et pond&eacute;r&eacute;es, vous pouvez calculer la sortie du neurone en cliquant le bouton avec une courbe en S ce qui implique le calcul de la somme pond&eacute;r&eacute;e des entr&eacute;es suivi de l’activation du neurone. Vous pouvez &eacute;galement afficher uniquement le r&eacute;sultat du calcul de la somme pond&eacute;r&eacute;e en cliquant sur le bouton avec un +.</p>
+		<p>Une fois les entr&eacute;es choisies et pond&eacute;r&eacute;es, vous pouvez calculer la sortie du neurone en cliquant le bouton avec une courbe en S ce qui implique le calcul de la somme pond&eacute;r&eacute;e des entr&eacute;es suivi de l'activation du neurone. Vous pouvez &eacute;galement afficher uniquement le r&eacute;sultat du calcul de la somme pond&eacute;r&eacute;e en cliquant sur le bouton avec un +.</p>
 
-		<p>Vous pouvez changer l’activation du neurone (sa fonction d’activation) avec le menu identifi&eacute; «Choix d'activation» situ&eacute; un peu &agrave; droite en dessous du corps du neurone.</p> 
+		<p>Vous pouvez changer l'activation du neurone (sa fonction d'activation) avec le menu identifi&eacute; &laquo;Choix d'activation&raquo; situ&eacute; un peu &agrave; droite en dessous du corps du neurone.</p> 
 		<br/><br/>
 
 	</div>
@@ -217,8 +217,8 @@
 		<label class="titre_exercice">Neurone ET</label>
 		<ol>
 			<li>Placez le poids du biais aux environs de -0.60<br/>Rappelez-vous que la valeur du biais est toujours fix&eacute;e &agrave; 1.</li>
-			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».<br/>
-			Le seuil de d&eacute;clenchement de la sigmoïde se trouve au milieu de l’intervalle soit 0.5</li>
+			<li>Choisissez l'activation &laquo;Courbe en S positive&raquo; dans le menu &laquo;Choix d'activation&raquo;.<br/>
+			Le seuil de d&eacute;clenchement de la sigmo&iuml;de se trouve au milieu de l'intervalle soit 0.5</li>
 			<li>R&eacute;glez les entr&eacute;es 1 et 2 &agrave; 0.50</li>
 			<li>V&eacute;rifiez que le neurone se comporte comme un op&eacute;rateur logique ET</li>
 		</ol>
@@ -228,7 +228,7 @@
 		<label class="titre_exercice">Neurone OU</label>
 		<ol>
 			<li>Placez le poids du biais aux environs de -0.25.</li>
-			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Choisissez l'activation &laquo;Courbe en S positive&raquo; dans le menu &laquo;Choix d'activation&raquo;.</li>
 			<li>R&eacute;glez les entr&eacute;es 1 et 2 &agrave; 0.50</li>
 			<li>V&eacute;rifiez que le neurone se comporte comme un op&eacute;rateur logique OU</li>
 		</ol>
@@ -237,10 +237,10 @@
 	<div id="NON" class="tabcontent">
 		<label class="titre_exercice">Neurone NON</label>
 		<ol>
-			<li>Placez d’abord le poids du biais aux environs de 0.5</li>
-			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
-			<li>Ensuite, &eacute;liminez l’effet de l’entr&eacute;e 2 en la fixant &agrave; 0.<br/>L’op&eacute;ration de n&eacute;gation se fera uniquement sur l’entr&eacute;e 1.</li>
-			<li>R&eacute;glez l’entr&eacute;e 1 &agrave; -0.7</li>
+			<li>Placez d'abord le poids du biais aux environs de 0.5</li>
+			<li>Choisissez l'activation &laquo;Courbe en S positive&raquo; dans le menu &laquo;Choix d'activation&raquo;.</li>
+			<li>Ensuite, &eacute;liminez l'effet de l'entr&eacute;e 2 en la fixant &agrave; 0.<br/>L'op&eacute;ration de n&eacute;gation se fera uniquement sur l'entr&eacute;e 1.</li>
+			<li>R&eacute;glez l'entr&eacute;e 1 &agrave; -0.7</li>
 			<li>V&eacute;rifiez que le neurone se comporte comme un op&eacute;rateur logique NON</li>
 		</ol>
 	</div>
@@ -248,8 +248,8 @@
 	<div id="NON_ET" class="tabcontent">
 		<label class="titre_exercice">Neurone NON ET</label>
 		<ol>
-			<li>Placez d’abord le poids du biais aux environs de 0.6</li>
-			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Placez d'abord le poids du biais aux environs de 0.6</li>
+			<li>Choisissez l'activation &laquo;Courbe en S positive&raquo; dans le menu &laquo;Choix d'activation&raquo;.</li>
 			<li>R&eacute;glez les entr&eacute;es 1 et 2 &agrave; -0.50</li>
 			<li>V&eacute;rifiez que le neurone se comporte comme un op&eacute;rateur logique NON ET</li>
 		</ol>
@@ -259,8 +259,8 @@
 	<div id="NON_OU" class="tabcontent">
 		<label class="titre_exercice">Neurone NON OU</label>
 		<ol>
-			<li>Placez d’abord le poids du biais aux environs de 0.25</li>
-			<li>Choisissez l’activation «Courbe en S positive» dans le menu «Choix d’activation».</li>
+			<li>Placez d'abord le poids du biais aux environs de 0.25</li>
+			<li>Choisissez l'activation &laquo;Courbe en S positive&raquo; dans le menu &laquo;Choix d'activation&raquo;.</li>
 			<li>R&eacute;glez les entr&eacute;es 1 et 2 &agrave; -0.50</li>
 			<li>V&eacute;rifiez que le neurone se comporte comme un op&eacute;rateur logique NON OU</li>
 		</ol>
