@@ -128,6 +128,7 @@
 							<span class="infobulletext">Sortie du neurone</span>
 						</span>
 						<label id="affichage_activation"></label>
+						<img id="declenchement" src="declenchement.png">
 					</button>
 				</span>
 	            <!-- https://www.w3schools.com/howto/howto_custom_select.asp -->
@@ -249,6 +250,7 @@
 	    // Fonction sommation - somme ponderée des entrées
 	    function somme_ponderee() {
 	    	sortie_activation.innerHTML = ""
+	    	document.getElementById("declenchement").style.visibility = "hidden";
 	    	somme_ponderee_entrees = (entree_biais*poids_biais+entree_1*poids_1+entree_2*poids_2).toFixed(2);
 	    	console.log("Somme pondérée: "+somme_ponderee_entrees);
 	    	// alert("Somme pondérée: "+ somme_ponderee_entrees);
@@ -383,33 +385,44 @@
 	 		switch(fonction_activation) {
 			  case "sigmoide":
 			    resultat_activation = sigmoide(x); 
-			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
-			    calcul_a_afficher += " - Activation: Courbe en S positive, entre 0 et +1, ou sigmo&iuml;de, ou fonction logistique.";
+			    calcul_a_afficher = "sigmo"+"&iuml;"+"de( "+ calcul_a_afficher + " ) = " + round(resultat_activation,2);
+			    calcul_a_afficher += " - Activation: Courbe en S positive, entre 0 et +1, ou sigmo&iuml;de, ou fonction logistique, avec un seuil de d&eacute;clenchement &agrave; 0.5";
 			    // alert("Activation: Courbe en S positive, entre 0 et +1, ou sigmoïde, ou fonction logistique.")
-			    if (resultat_activation >= 0.5) {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 serait 'allum&eacute;'.";
+			    if (resultat_activation > 0.5) {
+			    	calcul_a_afficher += " - Notez que le neurone est 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "visible";
 			    } else {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.5 ne serait pas 'allum&eacute;'.";
+			    	calcul_a_afficher += " - Notez que le neurone n'est pas 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "hidden";
 			    }
 				console.log("x = "+ x + " sigmoide = "+ resultat_activation);
 			    break;
 			  case "tanh":
 			    resultat_activation = tangente_hyperbolique(x); 
-			    calcul_a_afficher = "tanh( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
-			    calcul_a_afficher += " - Activation: Courbe en S centr&eacute;e sur z&eacute;ro, entre -1 et +1 ou tangente hyperbolique.";
+			    calcul_a_afficher = "tanh( "+ calcul_a_afficher + " ) = " + round(resultat_activation,2);
+			    calcul_a_afficher += " - Activation: Courbe en S centr&eacute;e sur z&eacute;ro, entre -1 et +1 ou tangente hyperbolique, avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro";
 			    // alert("Activation: Courbe en S centrée sur zéro, entre -1 et +1 ou tangente hyperbolique.");
-			    if (resultat_activation >= 0.0) {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro serait 'allum&eacute;'.";
+			    if (resultat_activation > 0.0) {
+			    	calcul_a_afficher += " - Notez que le neurone est 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "visible";
 			    } else {
-			    	calcul_a_afficher += " - Notez qu'un neurone avec un seuil de d&eacute;clenchement &agrave; 0.0 ne serait pas 'allum&eacute;'."
+			    	calcul_a_afficher += " - Notez que le neurone n'est pas 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "hidden";
 			    }
 				console.log("x = "+ x + " tangente_hyperbolique = "+ resultat_activation);
 			    break;
 			  case "relu":
 			    resultat_activation = relu(x);
-			    calcul_a_afficher = "relu( "+ calcul_a_afficher + " ) = " + resultat_activation.toFixed(2);
-			    calcul_a_afficher += " - Activation: Rampe droite &agrave; 45 degr&eacute; ou unit&eacute; lin&eacute;aire rectifié&eacute;, en anglais ReLU";
+			    calcul_a_afficher = "relu( "+ calcul_a_afficher + " ) = " + round(resultat_activation,2);
+			    calcul_a_afficher += " - Activation: Rampe droite &agrave; 45 degr&eacute; ou unit&eacute lin&eacute;aire rectifié&eacute;, en anglais ReLU, avec un seuil de d&eacute;clenchement &agrave; z&eacute;ro";
 			    // alert("Activation: Rampe droite à 45 degré ou unité linéaire rectifiée, en anglais ReLU");
+			    if (resultat_activation > 0.0) {
+			    	calcul_a_afficher += " - Notez que le neurone est 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "visible";
+			    } else {
+			    	calcul_a_afficher += " - Notez que le neurone n'est pas 'd&eacute;clench&eacute;'.";
+			    	document.getElementById("declenchement").style.visibility = "hidden";
+			    }
 				console.log("x = "+ x + " ReLU = "+ resultat_activation);
 			    break;
 			  default:
@@ -424,6 +437,11 @@
 	    // Nombre aleatoire entre 0 et 1
 	    function nombreAleatoire() {
 	        return Math.random(); 
+	    }
+
+	    function round(num, precision) {
+	    	var base = 10 ** precision;
+	    	return (Math.round(num * base) / base).toFixed(precision);
 	    }
 
 	</script>
@@ -687,6 +705,7 @@
 
 		#image_fleche_sortie {
 			position:relative;
+			width:150px;
 			bottom:140px;
 			left:-210px;
 		}
@@ -694,7 +713,8 @@
 		#image_sortie_activation {
 			position:relative; 
 			bottom:130px;
-			left:-200px;
+			left:-210px;
+			height:50px;
 		}
 
 		.menu_deroulant_infobulle {
@@ -712,8 +732,16 @@
 			font-weight: bold;
 			font-size: 200%;
 			position:relative; 
-			bottom:154px;
-			left:-200px;
+			bottom:146px;
+			left:-215px;
+		}
+
+		#declenchement {
+			position: relative;
+			width:50px;
+			bottom:130px;
+			left:-210px;
+			visibility:hidden;
 		}
 
 		/*  https://www.w3schools.com/howto/howto_custom_select.asp */
